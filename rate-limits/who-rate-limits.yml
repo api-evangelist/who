@@ -1,0 +1,32 @@
+name: WHO API Rate Limits
+description: >
+  The World Health Organization does not publicly document formal rate limits
+  for its GHO OData API or ICD API. Both are provided as public goods and are
+  intended for reasonable programmatic access. Users are expected to implement
+  polite crawling practices. No burst limits, quota windows, or throttling
+  thresholds are published in official documentation as of June 2026.
+apis:
+  - name: GHO OData API
+    base_url: https://ghoapi.azureedge.net/api
+    authentication: None
+    rate_limit_documented: false
+    notes: >
+      No published rate limits. Hosted on Azure CDN (azureedge.net), which
+      provides inherent scalability. Recommended to implement exponential
+      backoff for batch requests to avoid service disruption.
+  - name: ICD API
+    base_url: https://id.who.int/
+    authentication: OAuth 2 (client credentials)
+    rate_limit_documented: false
+    notes: >
+      No published rate limits. OAuth 2 token endpoint is at
+      https://icdaccessmanagement.who.int/connect/token. Tokens should be
+      cached and reused until expiry rather than re-fetched per request.
+      Local deployment option available via Docker/Windows Service/Linux
+      to remove cloud API dependency.
+best_practices:
+  - Cache responses where possible to reduce repeated calls
+  - Reuse OAuth 2 tokens until expiration for ICD API
+  - Implement exponential backoff on 429 or 503 responses
+  - Avoid parallel bulk downloads; sequence requests
+  - Contact gho_info@who.int for high-volume access inquiries

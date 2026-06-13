@@ -1,0 +1,42 @@
+name: WHO API FinOps
+description: >
+  WHO APIs are provided free of charge as global public goods. There are no
+  direct API consumption costs, subscription fees, or usage-based charges
+  for either the GHO OData API or the ICD API. FinOps considerations are
+  limited to infrastructure and operational costs incurred by the consuming
+  organization when integrating these APIs.
+cost_model:
+  direct_api_costs: $0
+  pricing_tiers: None
+  metered_billing: false
+  free_tier: true
+  enterprise_pricing: false
+consumer_finops_considerations:
+  - name: Infrastructure Cost
+    description: >
+      Cloud or on-premise compute costs for applications that call WHO APIs.
+      No pass-through charges from WHO.
+  - name: Local Deployment Option (ICD API)
+    description: >
+      ICD API supports local deployment via Docker container, Windows Service,
+      or Linux systemd. This eliminates network latency and external
+      dependency but introduces hosting costs for the consumer.
+  - name: Data Storage
+    description: >
+      GHO and ICD data sets can be large. Consumers should account for
+      storage costs when caching or persisting responses locally.
+  - name: Bandwidth
+    description: >
+      GHO OData responses can be sizeable for broad indicator queries.
+      Use OData $filter and $select to minimize payload size and
+      reduce egress costs on consumer infrastructure.
+  - name: Developer Time
+    description: >
+      OAuth 2 token management, OData query construction, and data
+      normalization require engineering investment. Factor in developer
+      time as a primary cost driver.
+budget_guidance: >
+  Because WHO APIs carry no direct fee, total cost of ownership is driven
+  primarily by internal engineering and infrastructure. Organizations
+  should evaluate the local ICD API deployment for high-volume or
+  air-gapped use cases to control operational costs.

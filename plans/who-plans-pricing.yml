@@ -1,0 +1,42 @@
+name: WHO API Plans & Pricing
+description: >
+  The World Health Organization provides free public access to its APIs as a
+  global public good. There are no paid tiers or commercial licensing fees for
+  the core data APIs. The ICD API requires free registration to obtain OAuth 2
+  client credentials. The GHO OData API is completely open with no
+  authentication or registration required.
+plans:
+  - name: GHO OData API - Open Access
+    description: >
+      Fully open, no registration or authentication required. Access all Global
+      Health Observatory indicators, country-level health statistics, and
+      dimension data via OData protocol.
+    price: Free
+    features:
+      - No registration required
+      - No API key needed
+      - OData protocol support
+      - Power BI compatible
+      - JSON response format
+      - Filter by indicator, country, region, year
+  - name: ICD API - Free Registered Access
+    description: >
+      Free access to the International Classification of Diseases API after
+      registering for an account at icd.who.int/icdapi. Provides OAuth 2
+      client credentials for authentication.
+    price: Free
+    features:
+      - Free registration required
+      - OAuth 2 client credentials (client ID + client secret)
+      - ICD-11 Foundation and Linearizations access
+      - ICD-10 access
+      - Multilingual support via Accept-Language header
+      - Swagger/OpenAPI documentation
+      - Local deployment (Docker, Windows Service, Linux systemd)
+      - Sample code available on GitHub
+    license: Creative Commons Attribution-NoDerivs 3.0 IGO (CC BY-ND 3.0 IGO)
+notes: >
+  WHO APIs are provided as global public goods in support of the WHO
+  mission to promote health for all. Commercial use is permitted under
+  applicable licenses with attribution. No SLA or uptime guarantees are
+  published for public API consumers.
