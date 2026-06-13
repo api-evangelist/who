@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/PostcoordinationSet",
+  "title": "PostcoordinationSet",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Full code string for the postcoordination combination",
+      "nullable": true
+    },
+    "linearizationUri": {
+      "type": "string",
+      "description": "Full linearization URI string for the postcoordination combination",
+      "nullable": true
+    },
+    "foundationUri": {
+      "type": "string",
+      "description": "Full foundation URI string for the postcoordination combination",
+      "nullable": true
+    },
+    "label": {
+      "type": "string",
+      "description": "Label representing the postcoordination combination containing the titles of the stem code all postcoordination values inluding nested values",
+      "nullable": true
+    },
+    "stemCode": {
+      "type": "string",
+      "description": "Code of the stem for the postcoordination combination\r\nstemCode is not provided if the postcoordinationset is a plain entity without postcoordination. \r\nIn that case code can be used instead",
+      "nullable": true
+    },
+    "stemLinearizationUri": {
+      "type": "string",
+      "description": "Linearization URI string for the stem of the postcoordination combination. \r\nStemLinearizationUri is not provided if the postcoordinationset is a plain entity without postcoordination. \r\nIn that case LinearizationUri can be used instead",
+      "nullable": true
+    },
+    "stemFoundationUri": {
+      "type": "string",
+      "description": "Foundation URI string for the stem of the postcoordination combination\r\nStemFoundationUri is not provided if the postcoordinationset is a plain entity without postcoordination. \r\nIn that case FoundationUri can be used instead",
+      "nullable": true
+    },
+    "stemLabel": {
+      "type": "string",
+      "description": "Label representing the stem of the postcoordination combination\r\nStemLabel is not provided if the postcoordinationset is a plain entity without postcoordination. \r\nIn that case Label can be used instead",
+      "nullable": true
+    },
+    "postcoordinationValues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PostcoordinationValue"
+      },
+      "description": "List of axes and values added to the stem which builds the postcoordination combination",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Represents a postcoordination combination. It could be a nested postcoordination where the axis value can also be a postcoordination combination"
+}

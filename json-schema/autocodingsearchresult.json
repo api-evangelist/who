@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/AutoCodingSearchResult",
+  "title": "AutoCodingSearchResult",
+  "type": "object",
+  "properties": {
+    "searchText": {
+      "type": "string",
+      "description": "Text that is searched",
+      "nullable": true
+    },
+    "matchingText": {
+      "type": "string",
+      "description": "The best matching phrase found in the classification",
+      "nullable": true
+    },
+    "theCode": {
+      "type": "string",
+      "description": "Code of the best matching entity found in the classification",
+      "nullable": true
+    },
+    "foundationURI": {
+      "type": "string",
+      "description": "Foundation URI of the best matching entity found in the classification",
+      "nullable": true
+    },
+    "linearizationURI": {
+      "type": "string",
+      "description": "Linearization URI of the best matching entity found in the classification",
+      "nullable": true
+    },
+    "matchLevel": {
+      "$ref": "#/components/schemas/MatchLevelEnum"
+    },
+    "matchScore": {
+      "type": "number",
+      "description": "Shows the score of the match. The score is a value between 0 and 1. The higher the score the better the match.",
+      "format": "double"
+    },
+    "matchType": {
+      "$ref": "#/components/schemas/PropertyValueTypeEnum"
+    },
+    "isTitle": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Response object for autocode endpoint"
+}

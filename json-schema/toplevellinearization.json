@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/TopLevelLinearization",
+  "title": "TopLevelLinearization",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "type": "string",
+      "description": "JSON-LD Context for the endpoint",
+      "nullable": true
+    },
+    "@id": {
+      "type": "string",
+      "description": "unique id for the classification",
+      "nullable": true
+    },
+    "title": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "definition": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "child": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of top level entities",
+      "nullable": true
+    },
+    "releaseDate": {
+      "type": "string",
+      "description": "Release date",
+      "nullable": true
+    },
+    "releaseId": {
+      "type": "string",
+      "description": "Release identifier for this particular release of the classification",
+      "nullable": true
+    },
+    "browserUrl": {
+      "type": "string",
+      "description": "ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.\r\nBrowser URL property provides a direct link to the classification in the WHO's on-line ICD Browser.",
+      "nullable": true
+    },
+    "availableLanguages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "All languages available for this linearization. The languages in pre-release state are included",
+      "nullable": true
+    },
+    "prereleaseLanguages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Languages whose translations are in pre-release state for this linearization.",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Class representing top level for the foundation"
+}

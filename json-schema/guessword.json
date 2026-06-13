@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/GuessWord",
+  "title": "GuessWord",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "nullable": true
+    },
+    "dontChangeResult": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Represents a keyword returned as a as a word completion suggestion or as a next word suggestion"
+}

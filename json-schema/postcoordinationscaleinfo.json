@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/PostcoordinationScaleInfo",
+  "title": "PostcoordinationScaleInfo",
+  "type": "object",
+  "properties": {
+    "axisName": {
+      "type": "string",
+      "description": "postcoordination axis name (a URI that uniquely identifies the axis)",
+      "nullable": true
+    },
+    "requiredPostcoordination": {
+      "type": "string",
+      "description": "If the post-coordination is required or just allowed. \"true\" means it is a required postcoordination",
+      "nullable": true
+    },
+    "allowMultipleValues": {
+      "type": "string",
+      "description": "Shows the behaviour of the postcoordination\r\n- 'AllowAlways' means the user could post-coordinate multiple times using this axis.\r\n- 'NotAllowed' means the user only post-coordinate once using this axis\r\n- 'AllowedExceptFromSameBlock' means multiple values are allowed only if they are coming from different blocks within the value set",
+      "nullable": true
+    },
+    "scaleEntity": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of allowed values during postcoordination. \r\nNote that these are hierarchical starting points of the allowed value set. i.e. any descendant of the entities provided under the \r\n`scaleEntity` property can be used during postcoordination.",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "This class contains information on which axes allow or require postcoordination for an entity \r\ntogether with the valueset that could be used for the postcoordination"
+}

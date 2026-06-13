@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/TopLevelFoundation",
+  "title": "TopLevelFoundation",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "type": "string",
+      "description": "JSON-LD Context for the endpoint",
+      "nullable": true
+    },
+    "@id": {
+      "type": "string",
+      "description": "unique id for the classification",
+      "nullable": true
+    },
+    "title": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "definition": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "child": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of top level entities",
+      "nullable": true
+    },
+    "releaseDate": {
+      "type": "string",
+      "description": "Release date",
+      "nullable": true
+    },
+    "releaseId": {
+      "type": "string",
+      "description": "Release identifier for this particular release of the classification",
+      "nullable": true
+    },
+    "browserUrl": {
+      "type": "string",
+      "description": "ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.\r\nBrowser URL property provides a direct link to the classification in the WHO's on-line ICD Browser.",
+      "nullable": true
+    },
+    "availableLanguages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "All languages provided by the API including the one in pre-release state. All languages available in any of the linearizations are included in the list. For example, a language is listed in here even if it is only availabe in one of the linearizations (e.g. ICF)",
+      "nullable": true
+    },
+    "supportedLinearizations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The linearizations from this foundation.",
+      "nullable": true
+    },
+    "allReleases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Top level URIs for all releases available for the foundation. http://id.who.int/icd/entity is the current version and the others are earlier versions",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Class representing top level for the foundation"
+}

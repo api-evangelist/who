@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/ISimpleEntity",
+  "title": "ISimpleEntity",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "URI of the Entity",
+      "nullable": true
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the Entity. The matched part of the title has a special markup for highlighting. \r\nFor example when searched for the cholera the title Vibrio cholera will be like Vibrio <em class=\"found\">cholera</em>",
+      "nullable": true
+    },
+    "stemId": {
+      "type": "string",
+      "description": "If the search result is composed of multiple URIs (i.e. postcoordinated result), Stem Id contains the URI of the stem code\r\nThis field contains the same information as Id in foundation search results",
+      "nullable": true
+    },
+    "isLeaf": {
+      "type": "boolean",
+      "description": "Shows whether the entity is a leaf node (i.e. does not have any children)"
+    },
+    "postcoordinationAvailability": {
+      "$ref": "#/components/schemas/PostcoordinationAvailabilityEnum"
+    },
+    "hasCodingNote": {
+      "type": "boolean",
+      "description": "Shows whether there is a coding note attached to the item"
+    },
+    "hasMaternalChapterLink": {
+      "type": "boolean",
+      "description": "Shows whether the entity has maternal chapter link"
+    },
+    "hasPerinatalChapterLink": {
+      "type": "boolean"
+    },
+    "matchingPVs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ISimplePropertyValue"
+      },
+      "description": "List of property values that match the search string",
+      "nullable": true,
+      "readOnly": true
+    },
+    "propertiesTruncated": {
+      "type": "boolean",
+      "description": "Shows if the list of matching property values is truncated as a result of too many maching property values",
+      "readOnly": true
+    },
+    "isResidualOther": {
+      "type": "boolean",
+      "description": "Shows if this entity is an other specified residual category. (Not applicable for foundation search )",
+      "readOnly": true
+    },
+    "isResidualUnspecified": {
+      "type": "boolean",
+      "description": "Shows if this entity is an unspecified residual category. (Not applicable for foundation search )",
+      "readOnly": true
+    },
+    "chapter": {
+      "type": "string",
+      "description": "The chapter code for the entity",
+      "nullable": true,
+      "readOnly": true
+    },
+    "theCode": {
+      "type": "string",
+      "description": "The code for the entity (Not applicable for foundation )",
+      "nullable": true,
+      "readOnly": true
+    },
+    "score": {
+      "type": "number",
+      "description": "Shows how good is the search result. Higher numbers are better matches. There is no other meaning to this value than its relative value",
+      "format": "double",
+      "readOnly": true
+    },
+    "titleIsASearchResult": {
+      "type": "boolean",
+      "description": "Shows whether the title of the entity is among the search results",
+      "readOnly": true
+    },
+    "titleIsTopScore": {
+      "type": "boolean",
+      "description": "Shows whether the title is the top scored search result",
+      "readOnly": true
+    },
+    "entityType": {
+      "$ref": "#/components/schemas/EntityTypeEnum"
+    },
+    "important": {
+      "type": "boolean",
+      "description": "Identifies a very good match. The result matches all words from the search query.",
+      "readOnly": true
+    },
+    "descendants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ISimpleEntity"
+      },
+      "description": "Used when the search result is not represented as flat list but rather organized according to ICD hierarchy",
+      "nullable": true,
+      "readOnly": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "SimpleEntity class represents a single ICD Entity in a search result"
+}

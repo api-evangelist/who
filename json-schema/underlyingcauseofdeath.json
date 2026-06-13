@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/UnderlyingCauseOfDeath",
+  "title": "UnderlyingCauseOfDeath",
+  "type": "object",
+  "properties": {
+    "stemCode": {
+      "type": "string",
+      "description": "Stem code for the computed underlying cause of death",
+      "nullable": true
+    },
+    "stemURI": {
+      "type": "string",
+      "description": "URI for the stem code of the computed underlying cause of death",
+      "nullable": true
+    },
+    "code": {
+      "type": "string",
+      "description": "Code for underlying cause of death. May include postcoordination combinations",
+      "nullable": true
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI for underlying cause of death. May include postcoordination combinations",
+      "nullable": true
+    },
+    "report": {
+      "type": "string",
+      "description": "Output report prepared during the computation of the underlying cause of death",
+      "nullable": true
+    },
+    "tabularReport": {
+      "type": "string",
+      "description": "Detailed tabular output report prepared during the computation of the underlying cause of death",
+      "nullable": true
+    },
+    "reject": {
+      "type": "boolean",
+      "description": "Whether the underlying cause of death was rejected due to an error"
+    },
+    "error": {
+      "type": "string",
+      "description": "Any errors returned by the doris engine",
+      "nullable": true
+    },
+    "warning": {
+      "type": "string",
+      "description": "Any warnings returned by the doris engine",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Underlying cause of death response from DORIS system"
+}

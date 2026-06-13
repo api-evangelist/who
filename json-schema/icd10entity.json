@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/ICD10Entity",
+  "title": "ICD10Entity",
+  "type": "object",
+  "properties": {
+    "title": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "definition": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "longDefinition": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "fullySpecifiedName": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "source": {
+      "type": "string",
+      "description": "URI of the foundation entity that this entity is derived from",
+      "nullable": true
+    },
+    "code": {
+      "type": "string",
+      "description": "Code for the ICD-11 category",
+      "nullable": true
+    },
+    "note": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "codingHint": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "classKind": {
+      "type": "string",
+      "description": "Class kind for the category. It could be one of the following\r\n- chapter : if the entity is a chapter. (i.e. at the top level of the classification\r\n- block : huger level entity which don't have codes\r\n- category : An ICD entity that bears a code",
+      "nullable": true
+    },
+    "child": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of URIs for the child entities",
+      "nullable": true
+    },
+    "parent": {
+      "type": "string",
+      "description": "List of URIs for the parent entity",
+      "nullable": true
+    },
+    "indexTerm": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "ICD-11 Index terms are generated from the terms (titles, inclusions, narrower terms) included in the entity\r\nas well as from the foundation entities under the linearization shore line. The IndexTerm property includes \r\nall of the index terms of a linearization entity in one place.",
+      "nullable": true
+    },
+    "inclusion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "List of inclusions for this entity",
+      "nullable": true
+    },
+    "exclusion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "List of exclusions for this entity",
+      "nullable": true
+    },
+    "browserUrl": {
+      "type": "string",
+      "description": "ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.\r\nBrowser URL property provides a direct link to the classification in the WHO's on-line ICD Browser.",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Class representing an ICD-10 Entity"
+}

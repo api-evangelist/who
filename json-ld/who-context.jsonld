@@ -1,0 +1,67 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "who": "https://www.who.int/ontology/",
+    "icd": "https://id.who.int/icd/",
+    "gho": "https://ghoapi.azureedge.net/api/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "identifier": "schema:identifier",
+    "version": "schema:version",
+    "dateModified": "schema:dateModified",
+    "provider": "schema:provider",
+    "Organization": "schema:Organization",
+    "WebAPI": "schema:WebAPI",
+    "EntryPoint": "schema:EntryPoint",
+    "HealthIndicator": {
+      "@id": "who:HealthIndicator",
+      "@type": "@id"
+    },
+    "IcdEntity": {
+      "@id": "icd:Entity",
+      "@type": "@id"
+    },
+    "LinearizationEntity": {
+      "@id": "icd:LinearizationEntity",
+      "@type": "@id"
+    },
+    "FoundationEntity": {
+      "@id": "icd:FoundationEntity",
+      "@type": "@id"
+    },
+    "codeInfo": {
+      "@id": "icd:codeInfo",
+      "@type": "@id"
+    },
+    "title": "schema:name",
+    "classKind": "who:classKind",
+    "browserUrl": "schema:url",
+    "code": "schema:identifier",
+    "inclusion": "who:inclusion",
+    "exclusion": "who:exclusion",
+    "postcoordinationScale": "who:postcoordinationScale"
+  },
+  "@type": "WebAPI",
+  "name": "World Health Organization APIs",
+  "description": "WHO public REST APIs for global health statistics, disease surveillance, immunization data, and ICD disease classifications.",
+  "provider": {
+    "@type": "Organization",
+    "name": "World Health Organization",
+    "url": "https://www.who.int"
+  },
+  "documentation": [
+    {
+      "@type": "EntryPoint",
+      "name": "GHO OData API",
+      "url": "https://www.who.int/data/gho/info/gho-odata-api",
+      "description": "Global Health Observatory OData API for health indicators across all WHO member states"
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "ICD API",
+      "url": "https://icd.who.int/docs/icd-api",
+      "description": "REST API for ICD-11 and ICD-10 International Classification of Diseases"
+    }
+  ]
+}

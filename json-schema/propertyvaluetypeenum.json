@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/PropertyValueTypeEnum",
+  "title": "PropertyValueTypeEnum",
+  "enum": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "type": "integer",
+  "description": "(0) Real:                                An index info from a linearization entity <br />\r\n(1) UnderShoreLine:                      An index entity from an entity under the shoreline<br />\r\n(2) UnderShoreLineLogicallyDefined:      An index entity from an entity under the shoreline \r\n                                                       and has a logical definition<br />\r\n(3) PostCoordinationCombination:         Virtual index entity created by following post-coordination\r\n                                                       combinations",
+  "format": "int32"
+}

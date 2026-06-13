@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/LinearizationEntity",
+  "title": "LinearizationEntity",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "type": "string",
+      "description": "JSON-LD Context for the endpoint",
+      "nullable": true
+    },
+    "@id": {
+      "type": "string",
+      "description": "unique id for this linearization entity (URI)",
+      "nullable": true
+    },
+    "title": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "definition": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "longDefinition": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "fullySpecifiedName": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "diagnosticCriteria": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "source": {
+      "type": "string",
+      "description": "URI of the foundation entity that this entity is derived from",
+      "nullable": true
+    },
+    "code": {
+      "type": "string",
+      "description": "Code for the ICD-11 category",
+      "nullable": true
+    },
+    "codingNote": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "blockId": {
+      "type": "string",
+      "description": "Block id for the block (only applicable to the blocks (groupings). e.g. BlockL2-1A0",
+      "nullable": true
+    },
+    "codeRange": {
+      "type": "string",
+      "description": "Code range for the block (only applicable to the blocks (groupings) e.g. 1A00-1A0Z",
+      "nullable": true
+    },
+    "classKind": {
+      "type": "string",
+      "description": "Class kind for the category. It could be one of the following\r\n- chapter : if the entity is a chapter. (i.e. at the top level of the classification\r\n- block : higher level entity which don't have codes\r\n- category : An ICD entity that bears a code\r\n- window : A special type of grouping which don;t have children underneath but just foundationChildElsewhere",
+      "nullable": true
+    },
+    "child": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of URIs for the child entities",
+      "nullable": true
+    },
+    "parent": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of URIs for the parent entity",
+      "nullable": true
+    },
+    "ancestor": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of ancestors. Provided only with include=ancestor",
+      "nullable": true
+    },
+    "descendant": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of descendants. Provided only with include=descendant",
+      "nullable": true
+    },
+    "foundationChildElsewhere": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "ICD-11 Foundation allows multiple parenting which means a category could be located in more than place in \r\nthe foundation component. However, this is not possible for ICD-11 linearizations such as in ICD-11 MMS \r\nin which a category must be located at a single location. When looking at a linearization entity, this \r\nproperty would list the foundation children that are not children in the linearization.",
+      "nullable": true
+    },
+    "indexTerm": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "ICD-11 Index terms are generated from the terms (titles, inclusions, narrower terms) included in the entity\r\nas well as from the foundation entities under the linearization shore line. The IndexTerm property includes \r\nall of the index terms of a linearization entity in one place.",
+      "nullable": true
+    },
+    "inclusion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "List of inclusions for this entity",
+      "nullable": true
+    },
+    "exclusion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "List of exclusions for this entity",
+      "nullable": true
+    },
+    "relatedEntitiesInMaternalChapter": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related entities from the maternal chapter (J)",
+      "nullable": true
+    },
+    "relatedEntitiesInPerinatalChapter": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related entities from the perinatal chapter (K)",
+      "nullable": true
+    },
+    "postcoordinationScale": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PostcoordinationScaleInfo"
+      },
+      "description": "Contains information on which axes allows or requires postcoordination for an entity \r\ntogether with the value set that could be used for the postcoordination",
+      "nullable": true
+    },
+    "browserUrl": {
+      "type": "string",
+      "description": "ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.\r\nBrowser URL property provides a direct link to the classification in the WHO's on-line ICD Browser.",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Class representing a linearization entity such as a category in the MMS."
+}

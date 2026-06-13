@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/MultiVersion",
+  "title": "MultiVersion",
+  "type": "object",
+  "properties": {
+    "title": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "latestRelease": {
+      "type": "string",
+      "description": "Latest release available for this linearization",
+      "nullable": true
+    },
+    "release": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of available releases for this linearization",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Class representing available versions of a given classification or classification entity\r\nThis is used when the request is made without a relase id (or minor version)"
+}

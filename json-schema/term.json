@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/Term",
+  "title": "Term",
+  "type": "object",
+  "properties": {
+    "label": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "foundationReference": {
+      "type": "string",
+      "description": "In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification\r\nIn these cases foundationReference holds the foundation URI for that entity\r\nIndex terms generated from foundation entities that are not located in the linearization have this reference",
+      "nullable": true
+    },
+    "linearizationReference": {
+      "type": "string",
+      "description": "In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification\r\nIn these cases linearizationReference holds the linearization (or release) URI for that entity",
+      "nullable": true
+    },
+    "deprecated": {
+      "type": "boolean",
+      "description": "If the term has been deprecated, this flag is set to true"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Class representing a term with language specific label and optional cross references"
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/FoundationEntity",
+  "title": "FoundationEntity",
+  "type": "object",
+  "properties": {
+    "title": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "definition": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "longDefinition": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "fullySpecifiedName": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "diagnosticCriteria": {
+      "$ref": "#/components/schemas/LanguageSpecificText"
+    },
+    "child": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of URIs for the child entities",
+      "nullable": true
+    },
+    "parent": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of URIs for the parent entities",
+      "nullable": true
+    },
+    "ancestor": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of ancestors. Provided only with include=ancestor",
+      "nullable": true
+    },
+    "descendant": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of descendants. Provided only with include=descendant",
+      "nullable": true
+    },
+    "synonym": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "List of synonyms for this entity",
+      "nullable": true
+    },
+    "narrowerTerm": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "List of narrower terms for this entity",
+      "nullable": true
+    },
+    "inclusion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "List of inclusions for this entity",
+      "nullable": true
+    },
+    "exclusion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Term"
+      },
+      "description": "List of exclusions for this entity",
+      "nullable": true
+    },
+    "browserUrl": {
+      "type": "string",
+      "description": "ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.\r\nBrowser URL property provides a direct link to the classification in the WHO's on-line ICD Browser.",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Class representing a foundation entity"
+}

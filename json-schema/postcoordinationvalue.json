@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/PostcoordinationValue",
+  "title": "PostcoordinationValue",
+  "type": "object",
+  "properties": {
+    "axisName": {
+      "type": "string",
+      "description": "Name of the axis",
+      "nullable": true
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PostcoordinationSet"
+      },
+      "description": "List of values which could be postcoordination combinations themselves",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Represnets a set values with a specified axis. It is used to build postcoordination combinations"
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/ISimplePropertyValue",
+  "title": "ISimplePropertyValue",
+  "type": "object",
+  "properties": {
+    "propertyId": {
+      "type": "string",
+      "description": "Id of the property",
+      "nullable": true,
+      "readOnly": true
+    },
+    "label": {
+      "type": "string",
+      "description": "Label that matches the search query. The matched part of the label has a special markup for highlighting. \r\nFor example when searched for the cholera the Vibrio cholera will be like Vibrio <em class=\"found\">cholera</em>",
+      "nullable": true,
+      "readOnly": true
+    },
+    "score": {
+      "type": "number",
+      "description": "Score of the match for this particular property value",
+      "format": "double",
+      "readOnly": true
+    },
+    "important": {
+      "type": "boolean",
+      "description": "Identifies a very good match. The result matches all words from the search query.",
+      "readOnly": true
+    },
+    "foundationUri": {
+      "type": "string",
+      "description": "Only used when searching a linearization\r\nThe foundation URI in which the property value is located.\r\nThis is filled in only during a linearization search when this property value is coming from an under shoreline entity.",
+      "nullable": true
+    },
+    "propertyValueType": {
+      "$ref": "#/components/schemas/PropertyValueTypeEnum"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Represents PropertyValues returned in the search result"
+}

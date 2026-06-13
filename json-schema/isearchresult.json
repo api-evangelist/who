@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/ISearchResult",
+  "title": "ISearchResult",
+  "type": "object",
+  "properties": {
+    "destinationEntities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ISimpleEntity"
+      },
+      "description": "List of entities that match the search query",
+      "nullable": true,
+      "readOnly": true
+    },
+    "error": {
+      "type": "boolean",
+      "description": "Returns true if an error is occurred during the search",
+      "readOnly": true
+    },
+    "errorMessage": {
+      "type": "string",
+      "description": "Error message if there was an error",
+      "nullable": true,
+      "readOnly": true
+    },
+    "resultChopped": {
+      "type": "boolean",
+      "description": "If the search matches too many results, then the result is chopped",
+      "readOnly": true
+    },
+    "wordSuggestionsChopped": {
+      "type": "boolean",
+      "description": "Shows if the word suggestion list is chopped as a result of too many matching words.",
+      "readOnly": true
+    },
+    "guessType": {
+      "$ref": "#/components/schemas/GuessTypeEnum"
+    },
+    "uniqueSearchId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "words": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/GuessWord"
+      },
+      "description": "List of word suggestions if the search had includeKeywordResult parameter set to true",
+      "nullable": true,
+      "readOnly": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Represents the search result. The search result is organized by ICD entities and in each entity we provide matching property values"
+}

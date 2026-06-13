@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/LanguageSpecificText",
+  "title": "LanguageSpecificText",
+  "type": "object",
+  "properties": {
+    "@language": {
+      "type": "string",
+      "description": "Language code for the string",
+      "nullable": true
+    },
+    "@value": {
+      "type": "string",
+      "description": "Label in the given language",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Language specific text as used in JSON-LD"
+}

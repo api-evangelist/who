@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/DeathCertificateCheckResult",
+  "title": "DeathCertificateCheckResult",
+  "type": "object",
+  "properties": {
+    "report": {
+      "type": "string",
+      "description": "Output report prepared during the computation of the underlying cause of death",
+      "nullable": true
+    },
+    "tabularReport": {
+      "type": "string",
+      "description": "Detailed tabular output report prepared during the computation of the underlying cause of death",
+      "nullable": true
+    },
+    "issueIds": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "Underlying cause of death response from DORIS system"
+}

@@ -1,0 +1,483 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://id.who.int/schemas/CodeInfo",
+  "title": "CodeInfo",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Code as it is queried",
+      "nullable": true
+    },
+    "stemCode": {
+      "type": "string",
+      "description": "Code of the stem. i.e. the first code that is postcoordinated",
+      "nullable": true
+    },
+    "stemId": {
+      "type": "string",
+      "description": "Id of the stem.",
+      "nullable": true
+    },
+    "simplifiedCode": {
+      "type": "string",
+      "description": "In some cases the requested postcoordination combination may be simplified. In these cases, the simplifiedCode field contains\r\nthe code after simplification.",
+      "nullable": true
+    },
+    "simplifiedStemCode": {
+      "type": "string",
+      "description": "In some cases the requested postcoordination combination may be simplified. In these cases, the simplifiedStemCode field contains\r\nthe stem code after simplification.",
+      "nullable": true
+    },
+    "activityWhenInjured": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "alcoholUseInInjury": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "aspectsOfArmedConflict": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "aspectsOfAssaultAndMaltreatment": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "aspectsOfIntentionalSelfHarm": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "associatedWith": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "causality": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "chemicalAgent": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "contextOfAssaultAndMaltreatment": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "counterpart": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "course": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "diagnosisConfirmedBy": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "distribution": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "durationOfComa": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "extentOfBurnByBodySurface": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "extentOfFullThicknessBurnByBodySurface": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "fractureOpenOrClosed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "fractureSubtype": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "genderOfPerpetrator": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "genomicAndChomosomalAnomaly": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasAction": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasCausingCondition": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasGCSEyeScore": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasGCSMotorScore": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasGCSVerbalScore": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasManifestation": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasMeans": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasPupilReactionScore": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasSeverity": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasAlternativeSeverity1": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasAlternativeSeverity2": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "hasTarget": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "histopathology": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "infectiousAgent": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "jointInvolvementInFracture": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "laterality": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "mechanismOfInjury": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "mechanismOfTransportInjuryWithoutCounterpart": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "medication": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "modeOfTransportOfTheInjuredPerson": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "objectOrSubstanceProducingInjury": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "occupationalDescriptor": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "outcomeOfFullThicknessBurn": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "perpetratorVictimRelationship": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "placeOfOccurrence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "psychoactiveDrugUseInInjury": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "regional": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "relational": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "roleOfInjuredPersonInArmedConflict": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "roleOfTheInjuredPerson": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "serotype": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "specificAnatomy": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "sportsActivityDescriptor": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "temporalPatternAndOnset": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "timeInLife": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "transportEventDescriptor": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "typeOfArmedConflict": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "typeOfInjury": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "typeOfLegalIntervention": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "barrierOrFacilitator": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "capacity": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "performance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "extentOrMagnitudeOfImpairment": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "natureOfChangeInBodyStructure": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "description": "This class is used when an ICD-11 linearization queried with a code or a postcoordination code cluster\r\nIt provides information on the entities referred in the code string"
+}
