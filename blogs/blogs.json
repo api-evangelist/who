@@ -3,5 +3,14 @@
   "description": "WHO news room blog and health updates",
   "url": "https://www.who.int/news-room",
   "lastFetched": "2026-06-13",
-  "posts": []
+  "posts": [],
+  "repo": "who",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/world-health-organization-who-/",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
 }
