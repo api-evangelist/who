@@ -10,7 +10,7 @@ description: >
   required, while the ICD API provides structured access to ICD-11 and ICD-10
   clinical classifications via OAuth 2 credentials obtained through free
   registration.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/who/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -33,7 +33,7 @@ apis:
       indicators across all WHO member states and regions. No authentication is
       required. Supports OData filtering, field selection, and is compatible
       with Power BI.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.who.int/data/gho/info/gho-odata-api
     baseURL: https://ghoapi.azureedge.net/api
     tags:
@@ -53,7 +53,7 @@ apis:
       Foundation Component and Linearizations. Requires free registration to
       obtain OAuth 2 client credentials. Supports multilingual responses,
       JSON-LD, and Swagger/OpenAPI documentation.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://icd.who.int/docs/icd-api
     baseURL: https://id.who.int/
     tags:
