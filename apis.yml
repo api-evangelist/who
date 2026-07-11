@@ -70,6 +70,10 @@ apis:
       - type: Authentication
         url: https://icdaccessmanagement.who.int/connect/token
 common:
+  - type: Authentication
+    url: authentication/who-authentication.yml
+  - type: OAuthScopes
+    url: scopes/who-scopes.yml
   - type: Website
     url: https://www.who.int
   - type: Documentation
