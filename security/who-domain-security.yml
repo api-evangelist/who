@@ -1,0 +1,45 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.who.int
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 31 14:46:05 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: ghoapi.azureedge.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  9 05:48:59 2026 GMT
+  hsts: null
+- host: icd.who.int
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  8 09:58:40 2026 GMT
+  hsts: true
+  hsts_max_age: 2592000
+domains:
+- domain: who.int
+  dnssec: false
+  caa:
+  - 0 issue "digicert.com"
+  - 0 issue "godaddy.com"
+  - 0 issue "pki.goog"
+  - 0 issue "sectigo.com"
+  - 0 issuewild "sectigo.com"
+  - 0 issue "letsencrypt.org"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: azureedge.net
+  dnssec: false
+  caa:
+  - 0 issue "microsoft.com"
+  - 0 issuewild "microsoft.com"
+  - 0 issue "digicert.com; account=488f180f66637f6181c0f055bdfe0e1c40852d9cc7ac5affded3c97e2fab3f1e"
+  - 0 issuewild "digicert.com"
+  - 0 issue "digicert.com; account=37519e363bd0f3f470682383a25b2daa13232906ff77b9eb03d1269486782a2a"
+  - 0 issue "digicert.com; account=4735470c395ee719a2a0c2a15a49193ff5add1d47d164d31d186797e73892a18"
+  spf: false
+  dmarc: false
