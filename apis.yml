@@ -70,6 +70,8 @@ apis:
       - type: Authentication
         url: https://icdaccessmanagement.who.int/connect/token
 common:
+  - type: AgenticAccess
+    url: agentic-access/who-agentic-access.yml
   - type: DomainSecurity
     url: security/who-domain-security.yml
   - type: Authentication
