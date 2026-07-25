@@ -1,0 +1,310 @@
+openapi: 3.0.1
+info:
+  title: ICD Foundation ICD10 API
+  description: "\n<p>\nICD-API is a REST API that allows programmatic access to the International Classification of Diseases (ICD).\n</p><p>\nFor most users that require accessing the ICD-11 statistical classification with codes, you need to use the <b>Linearization</b> endpoints with the linearizationId set to <b>mms</b>\n</p><p>\n<b>Foundation</b> endpoints provide information on the Foundation Component of ICD-11. \n</p><p>\n<b>ICD10</b> endpoints serves ICD-10 releases. Please note that functionality on the ICD-10 endpoints are limited. (i.e. the search is not provided)\n</p><p>\nFor more information on the API please see the <a href=\"https://icd.who.int/icdapi\">ICD-API home page </a>\n</p>\n"
+  license:
+    name: ' ICD-11 Terms of Use and License Agreement '
+    url: https://icd.who.int/en/docs/icd11-license.pdf
+  version: v2.6.0
+security:
+- oauth2:
+  - icdapi_access
+tags:
+- name: ICD10
+paths:
+  /icd/release/10:
+    get:
+      tags:
+      - ICD10
+      summary: Lists the available ICD-10 releases
+      operationId: GetICD10Releases
+      parameters:
+      - name: API-Version
+        in: header
+        description: "Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API"
+        required: true
+        schema:
+          type: string
+      - name: Accept-Language
+        in: header
+        description: "ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc."
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiVersion'
+        '401':
+          description: Unauthorized
+  /icd/release/10/{code}:
+    get:
+      tags:
+      - ICD10
+      summary: Lists the available ICD-10 releases for the requested category
+      operationId: GetAvailableReleasesForICD10Entity
+      parameters:
+      - name: code
+        in: path
+        description: ICD-10 category code. For blocks the code range
+        required: true
+        schema:
+          type: string
+      - name: API-Version
+        in: header
+        description: "Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API"
+        required: true
+        schema:
+          type: string
+      - name: Accept-Language
+        in: header
+        description: "ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc."
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiVersion'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+  /icd/release/10/{releaseId}:
+    get:
+      tags:
+      - ICD10
+      summary: This endpoint returns basic information on the released version of ICD-10 together with the chapters in it
+      operationId: GetICD10Release
+      parameters:
+      - name: releaseId
+        in: path
+        description: The id for the release. For ICD-10, this is generally the year e.g. 2016
+        required: true
+        schema:
+          type: string
+      - name: API-Version
+        in: header
+        description: "Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API"
+        required: true
+        schema:
+          type: string
+      - name: Accept-Language
+        in: header
+        description: "ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc."
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopLevel'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+  /icd/release/10/{releaseId}/{code}:
+    get:
+      tags:
+      - ICD10
+      summary: This endpoint returns  information on the category together with its children categories
+      operationId: GetICD10Entity
+      parameters:
+      - name: releaseId
+        in: path
+        description: The id for the release. For ICD-10, this is generally the year e.g. 2016
+        required: true
+        schema:
+          type: string
+      - name: code
+        in: path
+        description: ICD-10 category code. For blocks the code range
+        required: true
+        schema:
+          type: string
+      - name: API-Version
+        in: header
+        description: "Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API"
+        required: true
+        schema:
+          type: string
+      - name: Accept-Language
+        in: header
+        description: "ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc."
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICD10Entity'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+components:
+  schemas:
+    ICD10Entity:
+      type: object
+      properties:
+        title:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        definition:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        longDefinition:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        fullySpecifiedName:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        source:
+          type: string
+          description: URI of the foundation entity that this entity is derived from
+          nullable: true
+        code:
+          type: string
+          description: Code for the ICD-11 category
+          nullable: true
+        note:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        codingHint:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        classKind:
+          type: string
+          description: "Class kind for the category. It could be one of the following\r\n- chapter : if the entity is a chapter. (i.e. at the top level of the classification\r\n- block : huger level entity which don't have codes\r\n- category : An ICD entity that bears a code"
+          nullable: true
+        child:
+          type: array
+          items:
+            type: string
+          description: List of URIs for the child entities
+          nullable: true
+        parent:
+          type: string
+          description: List of URIs for the parent entity
+          nullable: true
+        indexTerm:
+          type: array
+          items:
+            $ref: '#/components/schemas/Term'
+          description: "ICD-11 Index terms are generated from the terms (titles, inclusions, narrower terms) included in the entity\r\nas well as from the foundation entities under the linearization shore line. The IndexTerm property includes \r\nall of the index terms of a linearization entity in one place."
+          nullable: true
+        inclusion:
+          type: array
+          items:
+            $ref: '#/components/schemas/Term'
+          description: List of inclusions for this entity
+          nullable: true
+        exclusion:
+          type: array
+          items:
+            $ref: '#/components/schemas/Term'
+          description: List of exclusions for this entity
+          nullable: true
+        browserUrl:
+          type: string
+          description: "ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.\r\nBrowser URL property provides a direct link to the classification in the WHO's on-line ICD Browser."
+          nullable: true
+      additionalProperties: false
+      description: Class representing an ICD-10 Entity
+    TopLevel:
+      type: object
+      properties:
+        '@context':
+          type: string
+          description: JSON-LD Context for the endpoint
+          nullable: true
+        '@id':
+          type: string
+          description: unique id for the classification
+          nullable: true
+        title:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        definition:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        child:
+          type: array
+          items:
+            type: string
+          description: List of top level entities
+          nullable: true
+        releaseDate:
+          type: string
+          description: Release date
+          nullable: true
+        releaseId:
+          type: string
+          description: Release identifier for this particular release of the classification
+          nullable: true
+        browserUrl:
+          type: string
+          description: "ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.\r\nBrowser URL property provides a direct link to the classification in the WHO's on-line ICD Browser."
+          nullable: true
+      additionalProperties: false
+      description: Shared superclass for Foundation and Linearization top level in API response. Used only for swagger docs.
+    Term:
+      type: object
+      properties:
+        label:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        foundationReference:
+          type: string
+          description: "In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification\r\nIn these cases foundationReference holds the foundation URI for that entity\r\nIndex terms generated from foundation entities that are not located in the linearization have this reference"
+          nullable: true
+        linearizationReference:
+          type: string
+          description: "In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification\r\nIn these cases linearizationReference holds the linearization (or release) URI for that entity"
+          nullable: true
+        deprecated:
+          type: boolean
+          description: If the term has been deprecated, this flag is set to true
+      additionalProperties: false
+      description: Class representing a term with language specific label and optional cross references
+    MultiVersion:
+      type: object
+      properties:
+        title:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        latestRelease:
+          type: string
+          description: Latest release available for this linearization
+          nullable: true
+        release:
+          type: array
+          items:
+            type: string
+          description: List of available releases for this linearization
+          nullable: true
+      additionalProperties: false
+      description: "Class representing available versions of a given classification or classification entity\r\nThis is used when the request is made without a relase id (or minor version)"
+    LanguageSpecificText:
+      type: object
+      properties:
+        '@language':
+          type: string
+          description: Language code for the string
+          nullable: true
+        '@value':
+          type: string
+          description: Label in the given language
+          nullable: true
+      additionalProperties: false
+      description: Language specific text as used in JSON-LD
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://icdaccessmanagement.who.int/connect/token
+          scopes:
+            icdapi_access: ''
