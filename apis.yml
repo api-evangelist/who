@@ -10,7 +10,20 @@ description: >
   required, while the ICD API provides structured access to ICD-11 and ICD-10
   clinical classifications via OAuth 2 credentials obtained through free
   registration.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: open
+  trial: false
+  try_now: true
+  public: true
+  label: Free · Open access
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/who.png
 url: https://raw.githubusercontent.com/api-evangelist/who/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -26,49 +39,56 @@ tags:
   - United Nations
   - Open Data
 apis:
-  - name: WHO GHO OData API
-    description: >
-      The Global Health Observatory (GHO) OData API provides a query interface
-      to WHO's global health data and statistics, covering hundreds of health
-      indicators across all WHO member states and regions. No authentication is
-      required. Supports OData filtering, field selection, and is compatible
-      with Power BI.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.who.int/data/gho/info/gho-odata-api
-    baseURL: https://ghoapi.azureedge.net/api
-    tags:
-      - Global Health Observatory
-      - Health Indicators
-      - OData
-      - Open Data
-    properties:
-      - type: Documentation
-        url: https://www.who.int/data/gho/info/gho-odata-api
-      - type: OpenAPI
-        url: https://ghoapi.azureedge.net/api/$metadata
-  - name: WHO ICD API
-    description: >
-      The ICD API provides HTTP-based REST access to the International
-      Classification of Diseases (ICD-11 and ICD-10), including the ICD-11
-      Foundation Component and Linearizations. Requires free registration to
-      obtain OAuth 2 client credentials. Supports multilingual responses,
-      JSON-LD, and Swagger/OpenAPI documentation.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://icd.who.int/docs/icd-api
-    baseURL: https://id.who.int/
-    tags:
-      - ICD-11
-      - ICD-10
-      - Disease Classification
-      - Clinical
-      - OAuth 2
-    properties:
-      - type: Documentation
-        url: https://icd.who.int/docs/icd-api/APIDoc-Version2/
-      - type: OpenAPI
-        url: https://id.who.int/swagger/index.html
-      - type: Authentication
-        url: https://icdaccessmanagement.who.int/connect/token
+- aid: who:who-foundation-api
+  name: World Health Organization (WHO) Foundation API
+  description: The Foundation API from World Health Organization (WHO) — 4 operation(s) for foundation.
+  humanURL: https://www.who.int/data/gho/info/gho-odata-api
+  baseURL: https://ghoapi.azureedge.net/api
+  tags:
+  - Foundation
+  properties:
+  - type: OpenAPI
+    url: openapi/who-foundation-api-openapi.yml
+  - type: Documentation
+    url: https://www.who.int/data/gho/info/gho-odata-api
+  - type: Documentation
+    url: https://icd.who.int/docs/icd-api/APIDoc-Version2/
+  - type: Authentication
+    url: https://icdaccessmanagement.who.int/connect/token
+- aid: who:who-icd10-api
+  name: World Health Organization (WHO) ICD10 API
+  description: The ICD10 API from World Health Organization (WHO) — 4 operation(s) for icd10.
+  humanURL: https://www.who.int/data/gho/info/gho-odata-api
+  baseURL: https://ghoapi.azureedge.net/api
+  tags:
+  - ICD10
+  properties:
+  - type: OpenAPI
+    url: openapi/who-icd10-api-openapi.yml
+  - type: Documentation
+    url: https://www.who.int/data/gho/info/gho-odata-api
+  - type: Documentation
+    url: https://icd.who.int/docs/icd-api/APIDoc-Version2/
+  - type: Authentication
+    url: https://icdaccessmanagement.who.int/connect/token
+- aid: who:who-linearization-classification-endpoints-api
+  name: World Health Organization (WHO) Linearization (classification endpoints) API
+  description: >-
+    The Linearization (classification endpoints) API from World Health Organization (WHO) — 13 operation(s)
+    for linearization (classification endpoints).
+  humanURL: https://www.who.int/data/gho/info/gho-odata-api
+  baseURL: https://ghoapi.azureedge.net/api
+  tags:
+  - Linearization (classification endpoints)
+  properties:
+  - type: OpenAPI
+    url: openapi/who-linearization-classification-endpoints-api-openapi.yml
+  - type: Documentation
+    url: https://www.who.int/data/gho/info/gho-odata-api
+  - type: Documentation
+    url: https://icd.who.int/docs/icd-api/APIDoc-Version2/
+  - type: Authentication
+    url: https://icdaccessmanagement.who.int/connect/token
 common:
   - type: AgenticAccess
     url: agentic-access/who-agentic-access.yml
