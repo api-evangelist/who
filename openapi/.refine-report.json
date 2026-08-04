@@ -1,0 +1,18 @@
+{
+  "provider": "who",
+  "sources": [
+    "who-foundation-api-openapi.yml",
+    "who-icd10-api-openapi.yml",
+    "who-linearization-classification-endpoints-api-openapi.yml"
+  ],
+  "outputs": [
+    "who-foundation-api-openapi.yml",
+    "who-icd10-api-openapi.yml",
+    "who-linearization-classification-endpoints-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
