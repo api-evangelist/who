@@ -1,0 +1,972 @@
+{
+  "item": [
+    {
+      "id": "834e3305-a2e9-4e57-af90-6e6c35d48823",
+      "name": "ICD10",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32606207-8a05-4211-83a6-fb4b9f83f5cd",
+          "name": "Lists the available ICD-10 releases",
+          "request": {
+            "name": "Lists the available ICD-10 releases",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "release",
+                "10"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45273b75-fbd5-4126-bf5a-082229c49d45",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"latestRelease\": \"string\",\n  \"release\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b1e7829-ac5f-4c6c-ba8b-150387fe313e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a327868-e80f-4ee9-b2d0-e4c0d7ab14dc",
+          "name": "Lists the available ICD-10 releases for the requested category",
+          "request": {
+            "name": "Lists the available ICD-10 releases for the requested category",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "release",
+                "10",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) ICD-10 category code. For blocks the code range"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae99a8a1-f710-4f8d-bfd8-5cb25278d78b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) ICD-10 category code. For blocks the code range"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"latestRelease\": \"string\",\n  \"release\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "face379a-1cd6-4932-8521-4ec7ed5c6bae",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) ICD-10 category code. For blocks the code range"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c306bfb9-ccb4-4269-a543-d151d96e0e44",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) ICD-10 category code. For blocks the code range"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e74e73b9-1b69-460b-9cdc-47850f27c5a8",
+          "name": "This endpoint returns basic information on the released version of ICD-10 together with the chapters in it",
+          "request": {
+            "name": "This endpoint returns basic information on the released version of ICD-10 together with the chapters in it",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "release",
+                "10",
+                ":releaseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "releaseId",
+                  "description": "(Required) The id for the release. For ICD-10, this is generally the year e.g. 2016"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c62c8c0-bf7a-4012-aeba-d85c22badfd7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":releaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "releaseId",
+                      "description": "(Required) The id for the release. For ICD-10, this is generally the year e.g. 2016"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@context\": \"string\",\n  \"@id\": \"string\",\n  \"title\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"definition\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"child\": [\n    \"string\",\n    \"string\"\n  ],\n  \"releaseDate\": \"string\",\n  \"releaseId\": \"string\",\n  \"browserUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5612f91a-e747-45b6-8a1f-1911096e69f3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":releaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "releaseId",
+                      "description": "(Required) The id for the release. For ICD-10, this is generally the year e.g. 2016"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a7e0a675-4ac0-4c0f-b167-2069c0652443",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":releaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "releaseId",
+                      "description": "(Required) The id for the release. For ICD-10, this is generally the year e.g. 2016"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8263a804-6c4a-4729-b062-57ab2339a107",
+          "name": "This endpoint returns  information on the category together with its children categories",
+          "request": {
+            "name": "This endpoint returns  information on the category together with its children categories",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "release",
+                "10",
+                ":releaseId",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "releaseId",
+                  "description": "(Required) The id for the release. For ICD-10, this is generally the year e.g. 2016"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) ICD-10 category code. For blocks the code range"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53c025af-8c45-4f3d-a490-f6ff825b97ac",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":releaseId",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "releaseId",
+                      "description": "(Required) The id for the release. For ICD-10, this is generally the year e.g. 2016"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) ICD-10 category code. For blocks the code range"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"definition\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"longDefinition\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"fullySpecifiedName\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"source\": \"string\",\n  \"code\": \"string\",\n  \"note\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"codingHint\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"classKind\": \"string\",\n  \"child\": [\n    \"string\",\n    \"string\"\n  ],\n  \"parent\": \"string\",\n  \"indexTerm\": [\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": true\n    },\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": true\n    }\n  ],\n  \"inclusion\": [\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": false\n    },\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": false\n    }\n  ],\n  \"exclusion\": [\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": true\n    },\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": true\n    }\n  ],\n  \"browserUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cbccc36-092f-4d2a-ab1f-0e2af26c2a08",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":releaseId",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "releaseId",
+                      "description": "(Required) The id for the release. For ICD-10, this is generally the year e.g. 2016"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) ICD-10 category code. For blocks the code range"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02b671a8-89b5-4ca4-8751-c099c97e4a6e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "release",
+                    "10",
+                    ":releaseId",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "releaseId",
+                      "description": "(Required) The id for the release. For ICD-10, this is generally the year e.g. 2016"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) ICD-10 category code. For blocks the code range"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "icdapi_access"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://icdaccessmanagement.who.int/connect/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "11ab07ac-2969-4380-86c5-d335bcfcf6f2",
+    "name": "ICD Foundation ICD10 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>\nICD-API is a REST API that allows programmatic access to the International Classification of Diseases (ICD).\n</p><p>\nFor most users that require accessing the ICD-11 statistical classification with codes, you need to use the <b>Linearization</b> endpoints with the linearizationId set to <b>mms</b>\n</p><p>\n<b>Foundation</b> endpoints provide information on the Foundation Component of ICD-11. \n</p><p>\n<b>ICD10</b> endpoints serves ICD-10 releases. Please note that functionality on the ICD-10 endpoints are limited. (i.e. the search is not provided)\n</p><p>\nFor more information on the API please see the <a href=\"https://icd.who.int/icdapi\">ICD-API home page </a>\n</p>\n",
+      "type": "text/plain"
+    }
+  }
+}

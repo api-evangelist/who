@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ICD Foundation ICD10 API",
+    "version": "v2.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://icdaccessmanagement.who.int/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ICD10",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists the available ICD-10 releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/10",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Lists the available ICD-10 releases"
+        },
+        {
+          "info": {
+            "name": "Lists the available ICD-10 releases for the requested category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/10/:code",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "path",
+                "description": "ICD-10 category code. For blocks the code range"
+              }
+            ]
+          },
+          "docs": "Lists the available ICD-10 releases for the requested category"
+        },
+        {
+          "info": {
+            "name": "This endpoint returns basic information on the released version of ICD-10 together with the chapters in it",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/10/:releaseId",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. For ICD-10, this is generally the year e.g. 2016"
+              }
+            ]
+          },
+          "docs": "This endpoint returns basic information on the released version of ICD-10 together with the chapters in it"
+        },
+        {
+          "info": {
+            "name": "This endpoint returns  information on the category together with its children categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/10/:releaseId/:code",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. For ICD-10, this is generally the year e.g. 2016"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "path",
+                "description": "ICD-10 category code. For blocks the code range"
+              }
+            ]
+          },
+          "docs": "This endpoint returns  information on the category together with its children categories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1273 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ICD Foundation Linearization (classification endpoints) API",
+    "version": "v2.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://icdaccessmanagement.who.int/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Linearization (classification endpoints)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "This endpoint returns basic information on the linearization (classification) such as ICD MMS together with the list of \r\navailable releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:linearizationname",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. use mms for ICD Mortality and Morbidity Statistics"
+              }
+            ]
+          },
+          "docs": "This endpoint returns basic information on the linearization (classification) such as ICD MMS together with the list of \r\navailable releases"
+        },
+        {
+          "info": {
+            "name": "This endpoint returns lists the URIs of the entity in the available releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:linearizationname/:id",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric part at the end of the URI for an entity"
+              }
+            ]
+          },
+          "docs": "This endpoint returns lists the URIs of the entity in the available releases"
+        },
+        {
+          "info": {
+            "name": "This endpoint returns the list of the URIs of the residual entity in the available releases.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:linearizationname/:id/:residual",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric part at the end of the URI for an entity.  For residual categories this number is the same as its parent but the residual categories also have other or unspecified at the end"
+              },
+              {
+                "name": "residual",
+                "value": "",
+                "type": "path",
+                "description": "For residual categories:\r\n            - this could be 'other' for other specified residual category\r\n            - or 'unspecified' for the unspecified residual category"
+              }
+            ]
+          },
+          "docs": "This endpoint returns the list of the URIs of the residual entity in the available releases."
+        },
+        {
+          "info": {
+            "name": "This endpoint returns basic information on the released linearization (such as MMS) together with the chapters in it",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              }
+            ]
+          },
+          "docs": "This endpoint returns basic information on the released linearization (such as MMS) together with the chapters in it"
+        },
+        {
+          "info": {
+            "name": "This endpoint return information on a linearization entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname/:id",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric part at the end of the URI for an entity"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Some property values such as ancestor and decendant lists are not provided in the response by default. However, it is possible\r\n            to request them. These properties are ancestor, descendant and diagnosticCriteria. For example, if you set include=ancestor, the returned response will \r\n            include all ancestor entity URIs for the requested entity.\r\n            A comma separated list could be used to request multiple optional property values. e.g: include=ancestor,descendant"
+              }
+            ]
+          },
+          "docs": "This endpoint return information on a linearization entity"
+        },
+        {
+          "info": {
+            "name": "This endpoint return information on a residual linearization entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname/:id/:residual",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2019-04"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric part at the end of the URI for an entity. For residual categories this number is the same as its parent but the residual categories also have other or unspecified at the end"
+              },
+              {
+                "name": "residual",
+                "value": "",
+                "type": "path",
+                "description": "For residual categories:\r\n            - this could be 'other' for other specified residual category\r\n            - or 'unspecified' for the unspecified residual category"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Some property values such as ancestor and decendant lists are not provided in the response by default. However, it is possible\r\n            to request them. For example, if you set include=ancestor the returned response will include all ancestor entity URIs for the requested entity.\r\n            A comma separated list could be used to request multiple optional property values. (e.g. include=ancestor,descendant"
+              }
+            ]
+          },
+          "docs": "This endpoint return information on a residual linearization entity"
+        },
+        {
+          "info": {
+            "name": "Provides the best matching classification classification entity (its code, linearization URI, foundation URI and other related information) for the provided search text. \r\nsee AutoCodingSearchResult schema for information on the response.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname/autocode",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "searchText",
+                "value": "",
+                "type": "query",
+                "description": "Input text for which the matching entity to be provided."
+              },
+              {
+                "name": "subtreesFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants. \r\n            When searching mms, by default chapters 26, V and X are not included"
+              },
+              {
+                "name": "matchThreshold",
+                "value": "",
+                "type": "query",
+                "description": "score is a value between 0 and 1 that indicates the similarity between the input text and the matched term. matchThreshold the minimum score to be included in the output. The API will use default value if not provided"
+              }
+            ]
+          },
+          "docs": "Provides the best matching classification classification entity (its code, linearization URI, foundation URI and other related information) for the provided search text. \r\nsee AutoCodingSearchResult schema for information on the response."
+        },
+        {
+          "info": {
+            "name": "This endpoint allows looking up an entity from its code. For postcoordinated code combinations, it provides \r\nmore information on the code combination such as which axes are used and what values do they have",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname/codeinfo/:code",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2021-05. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "path",
+                "description": "The code or code combination that will be looked up. (The & and / characters need to be URL encoded)"
+              },
+              {
+                "name": "flexiblemode",
+                "value": "",
+                "type": "query",
+                "description": "Normally, codeInfo returns an error when the provided code combination includes codes that are not in the predefined suggested value sets of the entity.\r\n            If the flexibleMode is set to true, it will return a result even when some of the postcoordination values are not in these defined value sets. In this case, the codes\r\n            whose postcoordination axis cannot be detected ('/' postcoordination) will be placed under otherPostcoordination rubric."
+              },
+              {
+                "name": "convertToTerminalCodes",
+                "value": "",
+                "type": "query",
+                "description": "by default it is false, if set to true, the codes will be changed to use the terminal codes (leaf nodes in the hierarchy).\r\n            In most cases this is done by changing the code to the unspecified resisual child"
+              }
+            ]
+          },
+          "docs": "This endpoint allows looking up an entity from its code. For postcoordinated code combinations, it provides \r\nmore information on the code combination such as which axes are used and what values do they have"
+        },
+        {
+          "info": {
+            "name": "This endpoint provides information on a given code, uri or combination of them. \r\nFor postcoordinated code combinations, it provides  more information on the code combination such as which axes are \r\nused and what values do they have. If the input is a code string such as 1A00&XN62R than it should be provided at the code paramter.\r\nIf the input is a uri string such as http://id.who.int/icd/... then it should be provided at the uri parameter.\r\nThe uri parameter accepts both foundation or linearization uris.\r\nDuring the process, if the postcoordination combination has an equivalent precoordinated entity, the system will return the information on the precoordinated entity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname/describe",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2021-05. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "The code or code combination that will be looked up. (The & and / characters need to be URL encoded)"
+              },
+              {
+                "name": "uri",
+                "value": "",
+                "type": "query",
+                "description": "Either foundation or linearization uri or uri combination that will be looked up. (The & and / characters need to be URL encoded)"
+              },
+              {
+                "name": "simplify",
+                "value": "",
+                "type": "query",
+                "description": "If set to true the postcoordinated code set will be simplified. For example, if GC08&XN6P4 is provided (Urinary tract infection & Escherichia coli), with simplified option, the result will be one code (GC08.0 Urinary tract infection, site not specified, due to Escherichia coli)"
+              },
+              {
+                "name": "flexiblemode",
+                "value": "",
+                "type": "query",
+                "description": "Normally, codeInfo returns an error when the provided code combination includes codes that are not in the predefined suggested value sets of the entity.\r\n            If the flexibleMode is set to true, it will return a result even when some of the postcoordination values are not in these defined value sets. In this case, the codes\r\n            whose postcoordination axis cannot be detected ('/' postcoordination) will be placed under otherPostcoordination rubric."
+              },
+              {
+                "name": "convertToTerminalCodes",
+                "value": "",
+                "type": "query",
+                "description": "by default it is false, if set to true, the codes and linearization URIs in the respone will be changed to use the terminal codes (leaf nodes in the hierarchy).\r\n            In most cases this is done by changing the code to the unspecified resisual child. This does not affect the foundation URIs provided in the response"
+              }
+            ]
+          },
+          "docs": "This endpoint provides information on a given code, uri or combination of them. \r\nFor postcoordinated code combinations, it provides  more information on the code combination such as which axes are \r\nused and what values do they have. If the input is a code string such as 1A00&XN62R than it should be provided at the code paramter.\r\nIf the input is a uri string such as http://id.who.int/icd/... then it should be provided at the uri parameter.\r\nThe uri parameter accepts both foundation or lineariz"
+        },
+        {
+          "info": {
+            "name": "This endpoint allows looking up a foundation entity within a linearization and returns where that entity is coded in this linearization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname/lookup",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "foundationUri",
+                "value": "",
+                "type": "query",
+                "description": "The uri of the foundation entity that you'd like to map to this linearization"
+              }
+            ]
+          },
+          "docs": "<br>If the foundation entity is included in the linearization and has a code then that linearization entity is returned. \r\n            If the foundation entity in included in the linearization but it is a grouping without a code then the system will return the unspecified \r\n            residual category under that grouping. \r\n            \r\n<br>If the entity is not included in the linearization then the system checks where that entity is aggregated to and then\r\n            returns that entity. \r\n"
+        },
+        {
+          "info": {
+            "name": "This endpoint is for searching the linearization (such as MMS). The search can be customized using the parameters as described\r\nSearch endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname/search",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Text to be searched. Having the character % at the end will be regarded as a wild card for that word"
+              },
+              {
+                "name": "subtreesFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants"
+              },
+              {
+                "name": "subtreeFilterUsesFoundationDescendants",
+                "value": "",
+                "type": "query",
+                "description": "When a subtree filter is used the search looks at the linearization descendants of the entities in the subtreefilter.\r\n            If subtreeFilterUsesFoundationDescendants is set to true, the search looks at the foundation descendants of the entities in the subtreefilter"
+              },
+              {
+                "name": "includeKeywordResult",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Default false. \r\n            If set to true, the search result will also include keyword list \r\n            - if the last word provided is incomplete, keyword list includes all words that start with the incomplete word (word completion mode)\r\n            - if the last word is complete, the keyword list will provide suggested additional words that could be added to the search query. (word suggestion mode)\r\n            The behavior can be seen in the 1st column of the ICD-11 Coding Tool search results"
+              },
+              {
+                "name": "chapterFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional, comma or semicolon separated list of chapter codes eg:01;02;21 When provided, the search will be performed only on these chapters.\r\n            If medicalCodingMode=true, the chapterFilter is set to not include all chapters but chapters 26, V and X"
+              },
+              {
+                "name": "useFlexisearch",
+                "value": "",
+                "type": "query",
+                "description": "Changes the search mode to flexible search.\r\n            - In the regular search mode, the Coding Tool will only give you results that contain all of the words that you've used in your search. It accepts different variants or \r\n            synonyms of the words but essentially it searches for a result that contains all components of your search. Whereas in flexible search mode, the results do not have to \r\n            contain all of the words that are typed. It would still try to find the best matching phrase but there may be words in your search that are not matched at all\r\n            - It is recommended to use flexible search only when regular search does not provide a result"
+              },
+              {
+                "name": "flatResults",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Default value false. If set to true the search result entities are provided in a nested data structure\r\n            representing the ICD-11 hierarchy. Otherwise they are listed as flat list of matches"
+              },
+              {
+                "name": "highlightingEnabled",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Default is true, if set to false the search result highlighting is turned off\r\n            and the results don't contain special tags for highlighting where the results are found within the text"
+              },
+              {
+                "name": "medicalCodingMode",
+                "value": "",
+                "type": "query",
+                "description": "This mode is the default and it should be used when searching the classification for medical coding purposes. \r\n            In this mode, the search gives results only from the entities that have a code. The system will search all index terms of an entity.\r\n            i.e. titles, synonyms, fully specified term, all terms of other entities that are in the foundation and aggregated into this entity\r\n            By default The chapters 26, V and X are not included in the search results"
+              },
+              {
+                "name": "propertiesToBeSearched",
+                "value": "",
+                "type": "query",
+                "description": "The properties to be included in the search. Used only when medicalCodingMode=false.\r\n            For example, if you'd like to search the definitions, then you need to set medicalCodingMode=false and propertiesToBeSearched=Definition \r\n            The valid values that could be used are: \"Title\", \"FullySpecifiedName\", \"Definition\", \"Exclusion\" and \"IndexTerm\" (if \"IndexTerm\" is used, the search will be performed \r\n            on all Titles, Synonyms and FullySpecifiedNames including the ones that are under shoreline (i.e Entities in the foundation but not in MMS. ) In such cases\r\n            the results will be shown based on where the match is aggregated into in MMS.\r\n            More than one property could be used with \",\" as the separator. In this case the results will include matches from any one of these properties"
+              }
+            ]
+          },
+          "docs": "This endpoint is for searching the linearization (such as MMS). The search can be customized using the parameters as described\r\nSearch endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K"
+        },
+        {
+          "info": {
+            "name": "This endpoint is for searching the linearization (such as MMS). The search can be customized using the parameters as described\r\nSearch endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/:linearizationname/search",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "linearizationname",
+                "value": "",
+                "type": "path",
+                "description": "Short name for the linearization. e.g. mms for ICD Mortality and Morbidity Statistics"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the release. This is generally formatted like this: 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Text to be searched. Having the character % at the end will be regarded as a wild card for that word"
+              },
+              {
+                "name": "subtreesFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants"
+              },
+              {
+                "name": "subtreeFilterUsesFoundationDescendants",
+                "value": "",
+                "type": "query",
+                "description": "When a subtree filter is used the search looks at the linearization descendants of the entities in the subtreefilter.\r\n            If subtreeFilterUsesFoundationDescendants is set to true, the search looks at the foundation descendants of the entities in the subtreefilter"
+              },
+              {
+                "name": "includeKeywordResult",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Default false. \r\n            If set to true, the search result will also include keyword list \r\n            - if the last word provided is incomplete, keyword list includes all words that start with the incomplete word (word completion mode)\r\n            - if the last word is complete, the keyword list will provide suggested additional words that could be added to the search query. (word suggestion mode)\r\n            The behavior can be seen in the 1st column of the ICD-11 Coding Tool search results"
+              },
+              {
+                "name": "chapterFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional, comma or semicolon separated list of chapter codes eg:01;02;21 When provided, the search will be performed only on these chapters.\r\n            If medicalCodingMode=true, the chapterFilter is set to not include all chapters but chapters 26, V and X"
+              },
+              {
+                "name": "useFlexisearch",
+                "value": "",
+                "type": "query",
+                "description": "Changes the search mode to flexible search.\r\n            - In the regular search mode, the Coding Tool will only give you results that contain all of the words that you've used in your search. It accepts different variants or \r\n            synonyms of the words but essentially it searches for a result that contains all components of your search. Whereas in flexible search mode, the results do not have to \r\n            contain all of the words that are typed. It would still try to find the best matching phrase but there may be words in your search that are not matched at all\r\n            - It is recommended to use flexible search only when regular search does not provide a result"
+              },
+              {
+                "name": "flatResults",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Default value false. If set to true the search result entities are provided in a nested data structure\r\n            representing the ICD-11 hierarchy. Otherwise they are listed as flat list of matches"
+              },
+              {
+                "name": "highlightingEnabled",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Default is true, if set to false the search result highlighting is turned off\r\n            and the results don't contain special tags for highlighting where the results are found within the text"
+              },
+              {
+                "name": "medicalCodingMode",
+                "value": "",
+                "type": "query",
+                "description": "This mode is the default and it should be used when searching the classification for medical coding purposes. \r\n            In this mode, the search gives results only from the entities that have a code. The system will search all index terms of an entity.\r\n            i.e. titles, synonyms, fully specified term, all terms of other entities that are in the foundation and aggregated into this entity\r\n            By default The chapters 26, V and X are not included in the search results"
+              },
+              {
+                "name": "propertiesToBeSearched",
+                "value": "",
+                "type": "query",
+                "description": "The properties to be included in the search. Used only when medicalCodingMode=false.\r\n            For example, if you'd like to search the definitions, then you need to set medicalCodingMode=false and propertiesToBeSearched=Definition \r\n            The valid values that could be used are: \"Title\", \"FullySpecifiedName\", \"Definition\", \"Exclusion\" and \"IndexTerm\" (if \"IndexTerm\" is used, the search will be performed \r\n            on all Titles, Synonyms and FullySpecifiedNames including the ones that are under shoreline (i.e Entities in the foundation but not in MMS. ) In such cases\r\n            the results will be shown based on where the match is aggregated into in MMS.\r\n            More than one property could be used with \",\" as the separator. In this case the results will include matches from any one of these properties"
+              }
+            ]
+          },
+          "docs": "This endpoint is for searching the linearization (such as MMS). The search can be customized using the parameters as described\r\nSearch endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K"
+        },
+        {
+          "info": {
+            "name": "Death certificate checking using the COEDIT integrated in Doris system (https://icd.who.int/doris)   \r\nThe fields provided are fields of a standard death certificate. You don't need to provide causeOfDeathUri fields if you provide causeOfDeathCode fields or vice versa",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/codedit",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the ICD release. This is generally formatted like this: 2025-01. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "sex",
+                "value": "",
+                "type": "query",
+                "description": "1:Male, 2:Female, 9:Unknown"
+              },
+              {
+                "name": "estimatedAge",
+                "value": "",
+                "type": "query",
+                "description": "Provided in ISO_8601 format https://en.wikipedia.org/wiki/ISO_8601#Durations.\r\n            E.g. P10YD 10 years, P9M 9 months, P5D 5 days, PT10H 10 hours, PT10M 10 minutes"
+              },
+              {
+                "name": "dateBirth",
+                "value": "",
+                "type": "query",
+                "description": "The date field used in the certificate is using the format defined in the W3C (https://www.w3.org/TR/NOTE-datetime)"
+              },
+              {
+                "name": "dateDeath",
+                "value": "",
+                "type": "query",
+                "description": "The date field used in the certificate is using the format defined in the W3C (https://www.w3.org/TR/NOTE-datetime)"
+              },
+              {
+                "name": "causeOfDeathCodeA",
+                "value": "",
+                "type": "query",
+                "description": "Cause field A. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathCodeB",
+                "value": "",
+                "type": "query",
+                "description": "Cause field B. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathCodeC",
+                "value": "",
+                "type": "query",
+                "description": "Cause field C. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathCodeD",
+                "value": "",
+                "type": "query",
+                "description": "Cause field D. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathCodeE",
+                "value": "",
+                "type": "query",
+                "description": "Cause field E. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathUriA",
+                "value": "",
+                "type": "query",
+                "description": "Cause field A. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathUriB",
+                "value": "",
+                "type": "query",
+                "description": "Cause field B. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathUriC",
+                "value": "",
+                "type": "query",
+                "description": "Cause field C. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathUriD",
+                "value": "",
+                "type": "query",
+                "description": "Cause field D. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathUriE",
+                "value": "",
+                "type": "query",
+                "description": "Cause field E. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathCodePart2",
+                "value": "",
+                "type": "query",
+                "description": "Cause field Part2. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathUriPart2",
+                "value": "",
+                "type": "query",
+                "description": "Cause field Part2. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "intervalA",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field A.  Provided in ISO_8601 format https://en.wikipedia.org/wiki/ISO_8601#Durations.\r\n            E.g. P10YD 10 years, P9M 9 months, P5D 5 days, PT10H 10 hours, PT10M 10 minutes"
+              },
+              {
+                "name": "intervalB",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field B. Format same as IntervalA"
+              },
+              {
+                "name": "intervalC",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field C. Format same as IntervalA"
+              },
+              {
+                "name": "intervalD",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field D. Format same as IntervalA"
+              },
+              {
+                "name": "intervalE",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field E. Format same as IntervalA"
+              },
+              {
+                "name": "surgeryWasPerformed",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes - 9: Unknown"
+              },
+              {
+                "name": "surgeryDate",
+                "value": "",
+                "type": "query",
+                "description": "Surgery date using the format defined in the W3C (https://www.w3.org/TR/NOTE-datetime)"
+              },
+              {
+                "name": "surgeryReason",
+                "value": "",
+                "type": "query",
+                "description": "Reason for surgery"
+              },
+              {
+                "name": "autopsyWasRequested",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes, 9: Unknown"
+              },
+              {
+                "name": "autopsyFindings",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes, 9: Unknown"
+              },
+              {
+                "name": "mannerOfDeath",
+                "value": "",
+                "type": "query",
+                "description": "0: Disease, 1: Accident, 2: Intentional self harm, 3: Assault, 4: Legal intervention, 5: War, 6: Could not be determined, 7: Pending investigation, 9: Unknown"
+              },
+              {
+                "name": "mannerOfDeathDateOfExternalCauseOrPoisoning",
+                "value": "",
+                "type": "query",
+                "description": "Date of external cause or poisoning using the format defined in the W3C (https://www.w3.org/TR/NOTE-datetime)"
+              },
+              {
+                "name": "mannerOfDeathDescriptionExternalCause",
+                "value": "",
+                "type": "query",
+                "description": "Description external cause"
+              },
+              {
+                "name": "mannerOfDeathPlaceOfOccuranceExternalCause",
+                "value": "",
+                "type": "query",
+                "description": "0: At home, 1: Residential institution, 2: School, other institution, public administration area, 3: Sports and athletics area, 4: Street and highway, 5: Trade and service area, 6: Industrial and construction area, 7: Farm, 8: Other place, 9: Unknown"
+              },
+              {
+                "name": "fetalOrInfantDeathMultiplePregnancy",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes, 9: Unknown"
+              },
+              {
+                "name": "fetalOrInfantDeathStillborn",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes, 9: Unknown"
+              },
+              {
+                "name": "fetalOrInfantDeathDeathWithin24h",
+                "value": "",
+                "type": "query",
+                "description": "If death within 24h specify number of hours survived."
+              },
+              {
+                "name": "fetalOrInfantDeathBirthWeight",
+                "value": "",
+                "type": "query",
+                "description": "Birth weight (in grams)."
+              },
+              {
+                "name": "fetalOrInfantDeathPregnancyWeeks",
+                "value": "",
+                "type": "query",
+                "description": "Number of completed weeks of pregnancy."
+              },
+              {
+                "name": "fetalOrInfantDeathAgeMother",
+                "value": "",
+                "type": "query",
+                "description": "Age of mother (years)."
+              },
+              {
+                "name": "fetalOrInfantDeathPerinatalDescription",
+                "value": "",
+                "type": "query",
+                "description": "If death was perinatal, please state condition of mother that affected the fetus and newborn."
+              },
+              {
+                "name": "maternalDeathWasPregnant",
+                "value": "",
+                "type": "query",
+                "description": "For women, was the deceased pregnant  0: No, 1: Yes, - 9: Unknown"
+              },
+              {
+                "name": "maternalDeathTimeFromPregnancy",
+                "value": "",
+                "type": "query",
+                "description": "0: \"At time of death\", - 1: \"Within 42 days before the death\", - 2: \"Between 43 days up to 1 year before death\", - 3: \"One year or more before death\", - 9: Unknown"
+              },
+              {
+                "name": "maternalDeathPregnancyContribute",
+                "value": "",
+                "type": "query",
+                "description": "Did pregnancy contribute to death   0: No, 1: Yes, - 9: Unknown"
+              }
+            ]
+          },
+          "docs": "<strong>IMPORTANT! This endpoint is pre-release.</strong> The results may have issues and the API may change in the next releases."
+        },
+        {
+          "info": {
+            "name": "Death certificate checking using the COEDIT integrated in Doris system (https://icd.who.int/doris) \r\nThe structure of the posted death certificate could be found at https://icd.who.int/docs/doris/en/json-format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/codedit",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Death certificate checking using the COEDIT integrated in Doris system (https://icd.who.int/doris) \r\nThe structure of the posted death certificate could be found at https://icd.who.int/docs/doris/en/json-format"
+        },
+        {
+          "info": {
+            "name": "Underlying cause of death detection using the rules of the Doris system (https://icd.who.int/doris)   \r\nThe fields provided are fields of a standard death certificate. You don't need to provide causeOfDeathUri fields if you provide causeOfDeathCode fields or vice versa",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/doris",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path",
+                "description": "The id for the ICD release. This is generally formatted like this: 2025-01. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "sex",
+                "value": "",
+                "type": "query",
+                "description": "1:Male, 2:Female, 9:Unknown"
+              },
+              {
+                "name": "estimatedAge",
+                "value": "",
+                "type": "query",
+                "description": "Provided in ISO_8601 format https://en.wikipedia.org/wiki/ISO_8601#Durations.\r\n            E.g. P10YD 10 years, P9M 9 months, P5D 5 days, PT10H 10 hours, PT10M 10 minutes"
+              },
+              {
+                "name": "dateBirth",
+                "value": "",
+                "type": "query",
+                "description": "The date field used in the certificate is using the format defined in the W3C (https://www.w3.org/TR/NOTE-datetime)"
+              },
+              {
+                "name": "dateDeath",
+                "value": "",
+                "type": "query",
+                "description": "The date field used in the certificate is using the format defined in the W3C (https://www.w3.org/TR/NOTE-datetime)"
+              },
+              {
+                "name": "causeOfDeathCodeA",
+                "value": "",
+                "type": "query",
+                "description": "Cause field A. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathCodeB",
+                "value": "",
+                "type": "query",
+                "description": "Cause field B. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathCodeC",
+                "value": "",
+                "type": "query",
+                "description": "Cause field C. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathCodeD",
+                "value": "",
+                "type": "query",
+                "description": "Cause field D. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathCodeE",
+                "value": "",
+                "type": "query",
+                "description": "Cause field E. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathUriA",
+                "value": "",
+                "type": "query",
+                "description": "Cause field A. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathUriB",
+                "value": "",
+                "type": "query",
+                "description": "Cause field B. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathUriC",
+                "value": "",
+                "type": "query",
+                "description": "Cause field C. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathUriD",
+                "value": "",
+                "type": "query",
+                "description": "Cause field D. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathUriE",
+                "value": "",
+                "type": "query",
+                "description": "Cause field E. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "causeOfDeathCodePart2",
+                "value": "",
+                "type": "query",
+                "description": "Cause field Part2. Classification codes comma separated. Post coordinated codes can be used"
+              },
+              {
+                "name": "causeOfDeathUriPart2",
+                "value": "",
+                "type": "query",
+                "description": "Cause field Part2. Classification URIs comma separated. Post coordinated URI strings can be used"
+              },
+              {
+                "name": "intervalA",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field A.  Provided in ISO_8601 format https://en.wikipedia.org/wiki/ISO_8601#Durations.\r\n            E.g. P10YD 10 years, P9M 9 months, P5D 5 days, PT10H 10 hours, PT10M 10 minutes"
+              },
+              {
+                "name": "intervalB",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field B. Format same as IntervalA"
+              },
+              {
+                "name": "intervalC",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field C. Format same as IntervalA"
+              },
+              {
+                "name": "intervalD",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field D. Format same as IntervalA"
+              },
+              {
+                "name": "intervalE",
+                "value": "",
+                "type": "query",
+                "description": "Time interval from onset to death for Field E. Format same as IntervalA"
+              },
+              {
+                "name": "surgeryWasPerformed",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes - 9: Unknown"
+              },
+              {
+                "name": "surgeryDate",
+                "value": "",
+                "type": "query",
+                "description": "Surgery date using the format defined in the W3C (https://www.w3.org/TR/NOTE-datetime)"
+              },
+              {
+                "name": "surgeryReason",
+                "value": "",
+                "type": "query",
+                "description": "Reason for surgery"
+              },
+              {
+                "name": "autopsyWasRequested",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes, 9: Unknown"
+              },
+              {
+                "name": "autopsyFindings",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes, 9: Unknown"
+              },
+              {
+                "name": "mannerOfDeath",
+                "value": "",
+                "type": "query",
+                "description": "0: Disease, 1: Accident, 2: Intentional self harm, 3: Assault, 4: Legal intervention, 5: War, 6: Could not be determined, 7: Pending investigation, 9: Unknown"
+              },
+              {
+                "name": "mannerOfDeathDateOfExternalCauseOrPoisoning",
+                "value": "",
+                "type": "query",
+                "description": "Date of external cause or poisoning using the format defined in the W3C (https://www.w3.org/TR/NOTE-datetime)"
+              },
+              {
+                "name": "mannerOfDeathDescriptionExternalCause",
+                "value": "",
+                "type": "query",
+                "description": "Description external cause"
+              },
+              {
+                "name": "mannerOfDeathPlaceOfOccuranceExternalCause",
+                "value": "",
+                "type": "query",
+                "description": "0: At home, 1: Residential institution, 2: School, other institution, public administration area, 3: Sports and athletics area, 4: Street and highway, 5: Trade and service area, 6: Industrial and construction area, 7: Farm, 8: Other place, 9: Unknown"
+              },
+              {
+                "name": "fetalOrInfantDeathMultiplePregnancy",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes, 9: Unknown"
+              },
+              {
+                "name": "fetalOrInfantDeathStillborn",
+                "value": "",
+                "type": "query",
+                "description": "0: No, 1: Yes, 9: Unknown"
+              },
+              {
+                "name": "fetalOrInfantDeathDeathWithin24h",
+                "value": "",
+                "type": "query",
+                "description": "If death within 24h specify number of hours survived."
+              },
+              {
+                "name": "fetalOrInfantDeathBirthWeight",
+                "value": "",
+                "type": "query",
+                "description": "Birth weight (in grams)."
+              },
+              {
+                "name": "fetalOrInfantDeathPregnancyWeeks",
+                "value": "",
+                "type": "query",
+                "description": "Number of completed weeks of pregnancy."
+              },
+              {
+                "name": "fetalOrInfantDeathAgeMother",
+                "value": "",
+                "type": "query",
+                "description": "Age of mother (years)."
+              },
+              {
+                "name": "fetalOrInfantDeathPerinatalDescription",
+                "value": "",
+                "type": "query",
+                "description": "If death was perinatal, please state condition of mother that affected the fetus and newborn."
+              },
+              {
+                "name": "maternalDeathWasPregnant",
+                "value": "",
+                "type": "query",
+                "description": "For women, was the deceased pregnant  0: No, 1: Yes, - 9: Unknown"
+              },
+              {
+                "name": "maternalDeathTimeFromPregnancy",
+                "value": "",
+                "type": "query",
+                "description": "0: \"At time of death\", - 1: \"Within 42 days before the death\", - 2: \"Between 43 days up to 1 year before death\", - 3: \"One year or more before death\", - 9: Unknown"
+              },
+              {
+                "name": "maternalDeathPregnancyContribute",
+                "value": "",
+                "type": "query",
+                "description": "Did pregnancy contribute to death   0: No, 1: Yes, - 9: Unknown"
+              }
+            ]
+          },
+          "docs": "<strong>IMPORTANT! This endpoint is pre-release.</strong> The results may have issues and the API may change in the next releases."
+        },
+        {
+          "info": {
+            "name": "Underlying cause of death detection using the rules of the Doris system (https://icd.who.int/doris) \r\nThe structure of the posted death certificate could be found at https://icd.who.int/docs/doris/en/json-format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/icd/release/11/:releaseId/doris",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Underlying cause of death detection using the rules of the Doris system (https://icd.who.int/doris) \r\nThe structure of the posted death certificate could be found at https://icd.who.int/docs/doris/en/json-format"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

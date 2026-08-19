@@ -1,0 +1,1257 @@
+{
+  "item": [
+    {
+      "id": "92118ee6-25ae-4adf-a4aa-537631ddb062",
+      "name": "Foundation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "012e8a80-5216-4d63-8d3d-eaa14e16dad3",
+          "name": "This endpoint returns basic information on the latest release of the ICD-11 Foundation together with the top level Foundation entities.",
+          "request": {
+            "name": "This endpoint returns basic information on the latest release of the ICD-11 Foundation together with the top level Foundation entities.",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "entity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "This is an optional parameter and if ignored, the API will return values from the latest released version of the Foundation.\r\n            If provided, the API will respond using that particular release. The values are like 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcd3adc9-41f3-4d1d-9d33-74fd150b4d96",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@context\": \"string\",\n  \"@id\": \"string\",\n  \"title\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"definition\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"child\": [\n    \"string\",\n    \"string\"\n  ],\n  \"releaseDate\": \"string\",\n  \"releaseId\": \"string\",\n  \"browserUrl\": \"string\",\n  \"availableLanguages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"supportedLinearizations\": [\n    \"string\",\n    \"string\"\n  ],\n  \"allReleases\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22444553-0f06-4b2a-ba25-ab2d28e81958",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79076cf2-8c0d-4468-a7c2-483b7e11389e",
+          "name": "This endpoint provides you information on a specific ICD-11 foundation entity",
+          "request": {
+            "name": "This endpoint provides you information on a specific ICD-11 foundation entity",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "entity",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "This is an optional parameter and if ignored, the API will return values from the latest released version of the Foundation.\r\n            If provided, the API will respond using that particular release. The values are like 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Some property values such as ancestor and decendant lists are not provided in the response by default. However, it is possible\r\n            to request them. These properties are <i>ancestor, descendant and diagnosticCriteria.</i> For example, if you set include=ancestor the returned response will \r\n            include all ancestor entity URIs for the requested entity.\r\n            A comma separated list could be used to request multiple optional property values. e.g. include=ancestor,descendant"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Numeric part at the end of the URI for an entity"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "beaa13c0-e983-4f2f-a8bb-08de629d3722",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Numeric part at the end of the URI for an entity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"definition\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"longDefinition\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"fullySpecifiedName\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"diagnosticCriteria\": {\n    \"@language\": \"string\",\n    \"@value\": \"string\"\n  },\n  \"child\": [\n    \"string\",\n    \"string\"\n  ],\n  \"parent\": [\n    \"string\",\n    \"string\"\n  ],\n  \"ancestor\": [\n    \"string\",\n    \"string\"\n  ],\n  \"descendant\": [\n    \"string\",\n    \"string\"\n  ],\n  \"synonym\": [\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": true\n    },\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": false\n    }\n  ],\n  \"narrowerTerm\": [\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": true\n    },\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": true\n    }\n  ],\n  \"inclusion\": [\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": false\n    },\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": false\n    }\n  ],\n  \"exclusion\": [\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": true\n    },\n    {\n      \"label\": {\n        \"@language\": \"string\",\n        \"@value\": \"string\"\n      },\n      \"foundationReference\": \"string\",\n      \"linearizationReference\": \"string\",\n      \"deprecated\": false\n    }\n  ],\n  \"browserUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b35ce484-1eb4-4f00-b3b9-0fa8957a3d31",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Numeric part at the end of the URI for an entity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09a47c2f-746b-4a07-b1fa-4980b39e395b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Numeric part at the end of the URI for an entity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ccc4883-5ec9-4503-b052-e971ca4c011f",
+          "name": "Provides the best matching classification entity (its code and URI) for the provided diagnostic text. see AutoCodingSearchResult\r\nschema for information on the response.",
+          "request": {
+            "name": "Provides the best matching classification entity (its code and URI) for the provided diagnostic text. see AutoCodingSearchResult\r\nschema for information on the response.",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "entity",
+                "autocode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "searchText",
+                  "value": "<string>",
+                  "description": "Input text for which the matching entity to be provided"
+                },
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "The id for the release. This is generally formatted like this: 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+                },
+                {
+                  "disabled": false,
+                  "key": "subtreesFilter",
+                  "value": "<string>",
+                  "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants"
+                },
+                {
+                  "disabled": false,
+                  "key": "matchThreshold",
+                  "value": "<double>",
+                  "description": "score is a value between 0 and 1 that indicates the similarity between the input text and the matched term. matchThreshold the minimum score to be included in the output. The API will use default value if not provided"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53b7923e-4bbb-4961-a444-174fae818736",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    "autocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "searchText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subtreesFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchThreshold",
+                      "value": "<double>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"searchText\": \"string\",\n  \"matchingText\": \"string\",\n  \"theCode\": \"string\",\n  \"foundationURI\": \"string\",\n  \"linearizationURI\": \"string\",\n  \"matchLevel\": 0,\n  \"matchScore\": 3633.4990847383174,\n  \"matchType\": 3,\n  \"isTitle\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fe918b9-fe03-43f2-b050-68d32d45206c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    "autocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "searchText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subtreesFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchThreshold",
+                      "value": "<double>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "825011dc-d34f-4771-852e-517a45655914",
+          "name": "This endpoint is for searching the foundation component of the ICD-11. The search can be customized using the parameters as described. Search endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K",
+          "request": {
+            "name": "This endpoint is for searching the foundation component of the ICD-11. The search can be customized using the parameters as described. Search endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "entity",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Text to be searched. Having the character % at the end will be regarded as a wild card for that word"
+                },
+                {
+                  "disabled": false,
+                  "key": "subtreesFilter",
+                  "value": "<string>",
+                  "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants"
+                },
+                {
+                  "disabled": false,
+                  "key": "chapterFilter",
+                  "value": "<string>",
+                  "description": "Optional, comma or semicolon separated list of chapter codes eg:01;02;21 When provided, the search will be performed only on these chapters"
+                },
+                {
+                  "disabled": false,
+                  "key": "useFlexisearch",
+                  "value": "false",
+                  "description": "Changes the search mode to flexible search.\r\n            - In the regular search mode, the Coding Tool will only give you results that contain all of the words that you've used in your search. It accepts different variants or \r\n            synonyms of the words but essentially it searches for a result that contains all components of your search. Whereas in flexible search mode, the results do not have to \r\n            contain all of the words that are typed. It would still try to find the best matching phrase but there may be words in your search that are not matched at all\r\n            - It is recommended to use flexible search only when regular search does not provide a result"
+                },
+                {
+                  "disabled": false,
+                  "key": "flatResults",
+                  "value": "true",
+                  "description": "Optional parameter. Default value false. If set to true the search result entities are provided in a nested data structure\r\n            representing the ICD-11 hierarchy. Otherwise they are listed as flat list of matches"
+                },
+                {
+                  "disabled": false,
+                  "key": "propertiesToBeSearched",
+                  "value": "<string>",
+                  "description": "The properties to be searched. By default the system searches, Title, Synonyms and FullySpecifiedName.\r\n            The valid values that could be used are: \"Title\", \"Synonym\", \"NarrowerTerm\", \"FullySpecifiedName\", \"Definition\" and \"Exclusion\"\r\n            More than one property could be used with \",\" as the separator. In this case the results will include matches from any one of these properties"
+                },
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "This is an optional parameter and if ignored, the API will return values from the latest released version of the Foundation.\r\n            If provided, the API will respond using that particular release. The values are like 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+                },
+                {
+                  "disabled": false,
+                  "key": "highlightingEnabled",
+                  "value": "true",
+                  "description": "Optional. Default is true, if set to false the search result highlighting is turned off\r\n            and the results don't contain special tags for highlighting where the results are found within the text"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "547041aa-cbe6-490f-a9c7-88ff96524789",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subtreesFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chapterFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "useFlexisearch",
+                      "value": "false"
+                    },
+                    {
+                      "key": "flatResults",
+                      "value": "true"
+                    },
+                    {
+                      "key": "propertiesToBeSearched",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "highlightingEnabled",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"destinationEntities\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"stemId\": \"string\",\n      \"isLeaf\": true,\n      \"postcoordinationAvailability\": 1,\n      \"hasCodingNote\": false,\n      \"hasMaternalChapterLink\": true,\n      \"hasPerinatalChapterLink\": false,\n      \"matchingPVs\": [\n        {\n          \"propertyId\": \"string\",\n          \"label\": \"string\",\n          \"score\": 9640.895129155244,\n          \"important\": true,\n          \"foundationUri\": \"string\",\n          \"propertyValueType\": 1\n        },\n        {\n          \"propertyId\": \"string\",\n          \"label\": \"string\",\n          \"score\": 4041.353187102843,\n          \"important\": false,\n          \"foundationUri\": \"string\",\n          \"propertyValueType\": 3\n        }\n      ],\n      \"propertiesTruncated\": true,\n      \"isResidualOther\": false,\n      \"isResidualUnspecified\": true,\n      \"chapter\": \"string\",\n      \"theCode\": \"string\",\n      \"score\": 6491.92450254504,\n      \"titleIsASearchResult\": true,\n      \"titleIsTopScore\": true,\n      \"entityType\": 0,\n      \"important\": true,\n      \"descendants\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ISimpleEntity detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ISimpleEntity detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"stemId\": \"string\",\n      \"isLeaf\": false,\n      \"postcoordinationAvailability\": 1,\n      \"hasCodingNote\": true,\n      \"hasMaternalChapterLink\": true,\n      \"hasPerinatalChapterLink\": true,\n      \"matchingPVs\": [\n        {\n          \"propertyId\": \"string\",\n          \"label\": \"string\",\n          \"score\": 3443.762003510886,\n          \"important\": true,\n          \"foundationUri\": \"string\",\n          \"propertyValueType\": 1\n        },\n        {\n          \"propertyId\": \"string\",\n          \"label\": \"string\",\n          \"score\": 694.4120315155922,\n          \"important\": false,\n          \"foundationUri\": \"string\",\n          \"propertyValueType\": 0\n        }\n      ],\n      \"propertiesTruncated\": false,\n      \"isResidualOther\": true,\n      \"isResidualUnspecified\": true,\n      \"chapter\": \"string\",\n      \"theCode\": \"string\",\n      \"score\": 9217.40410249721,\n      \"titleIsASearchResult\": true,\n      \"titleIsTopScore\": false,\n      \"entityType\": 2,\n      \"important\": false,\n      \"descendants\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ISimpleEntity detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ISimpleEntity detected>\"\n        }\n      ]\n    }\n  ],\n  \"error\": false,\n  \"errorMessage\": \"string\",\n  \"resultChopped\": true,\n  \"wordSuggestionsChopped\": false,\n  \"guessType\": 2,\n  \"uniqueSearchId\": \"d1995678-9fcc-3320-1e6e-c33e1a713b2c\",\n  \"words\": [\n    {\n      \"label\": \"string\",\n      \"dontChangeResult\": false\n    },\n    {\n      \"label\": \"string\",\n      \"dontChangeResult\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b6ad5a7-cf62-412e-bac0-5aab0bab2b83",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subtreesFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chapterFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "useFlexisearch",
+                      "value": "false"
+                    },
+                    {
+                      "key": "flatResults",
+                      "value": "true"
+                    },
+                    {
+                      "key": "propertiesToBeSearched",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "highlightingEnabled",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "588c9898-e736-4b4d-855e-2cc182a51b2f",
+          "name": "This endpoint is for searching the foundation component of the ICD-11. The search can be customized using the parameters as described. Search endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K",
+          "request": {
+            "name": "This endpoint is for searching the foundation component of the ICD-11. The search can be customized using the parameters as described. Search endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K",
+            "description": {},
+            "url": {
+              "path": [
+                "icd",
+                "entity",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Text to be searched. Having the character % at the end will be regarded as a wild card for that word"
+                },
+                {
+                  "disabled": false,
+                  "key": "subtreesFilter",
+                  "value": "<string>",
+                  "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants"
+                },
+                {
+                  "disabled": false,
+                  "key": "chapterFilter",
+                  "value": "<string>",
+                  "description": "Optional, comma or semicolon separated list of chapter codes eg:01;02;21 When provided, the search will be performed only on these chapters"
+                },
+                {
+                  "disabled": false,
+                  "key": "useFlexisearch",
+                  "value": "false",
+                  "description": "Changes the search mode to flexible search.\r\n            - In the regular search mode, the Coding Tool will only give you results that contain all of the words that you've used in your search. It accepts different variants or \r\n            synonyms of the words but essentially it searches for a result that contains all components of your search. Whereas in flexible search mode, the results do not have to \r\n            contain all of the words that are typed. It would still try to find the best matching phrase but there may be words in your search that are not matched at all\r\n            - It is recommended to use flexible search only when regular search does not provide a result"
+                },
+                {
+                  "disabled": false,
+                  "key": "flatResults",
+                  "value": "true",
+                  "description": "Optional parameter. Default value false. If set to true the search result entities are provided in a nested data structure\r\n            representing the ICD-11 hierarchy. Otherwise they are listed as flat list of matches"
+                },
+                {
+                  "disabled": false,
+                  "key": "propertiesToBeSearched",
+                  "value": "<string>",
+                  "description": "The properties to be searched. By default the system searches, Title, Synonyms and FullySpecifiedName.\r\n            The valid values that could be used are: \"Title\", \"Synonym\", \"NarrowerTerm\", \"FullySpecifiedName\", \"Definition\" and \"Exclusion\"\r\n            More than one property could be used with \",\" as the separator. In this case the results will include matches from any one of these properties"
+                },
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "This is an optional parameter and if ignored, the API will return values from the latest released version of the Foundation.\r\n            If provided, the API will respond using that particular release. The values are like 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+                },
+                {
+                  "disabled": false,
+                  "key": "highlightingEnabled",
+                  "value": "true",
+                  "description": "Optional. Default is true, if set to false the search result highlighting is turned off\r\n            and the results don't contain special tags for highlighting where the results are found within the text"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                "key": "API-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae13e628-33c5-479f-add0-e81bd12c2a1b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subtreesFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chapterFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "useFlexisearch",
+                      "value": "false"
+                    },
+                    {
+                      "key": "flatResults",
+                      "value": "true"
+                    },
+                    {
+                      "key": "propertiesToBeSearched",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "highlightingEnabled",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"destinationEntities\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"stemId\": \"string\",\n      \"isLeaf\": true,\n      \"postcoordinationAvailability\": 0,\n      \"hasCodingNote\": true,\n      \"hasMaternalChapterLink\": true,\n      \"hasPerinatalChapterLink\": false,\n      \"matchingPVs\": [\n        {\n          \"propertyId\": \"string\",\n          \"label\": \"string\",\n          \"score\": 2970.2283171168565,\n          \"important\": true,\n          \"foundationUri\": \"string\",\n          \"propertyValueType\": 3\n        },\n        {\n          \"propertyId\": \"string\",\n          \"label\": \"string\",\n          \"score\": 3888.1951502470756,\n          \"important\": false,\n          \"foundationUri\": \"string\",\n          \"propertyValueType\": 0\n        }\n      ],\n      \"propertiesTruncated\": false,\n      \"isResidualOther\": false,\n      \"isResidualUnspecified\": true,\n      \"chapter\": \"string\",\n      \"theCode\": \"string\",\n      \"score\": 1018.2368583356516,\n      \"titleIsASearchResult\": false,\n      \"titleIsTopScore\": false,\n      \"entityType\": 0,\n      \"important\": true,\n      \"descendants\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ISimpleEntity detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ISimpleEntity detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"stemId\": \"string\",\n      \"isLeaf\": false,\n      \"postcoordinationAvailability\": 0,\n      \"hasCodingNote\": true,\n      \"hasMaternalChapterLink\": true,\n      \"hasPerinatalChapterLink\": false,\n      \"matchingPVs\": [\n        {\n          \"propertyId\": \"string\",\n          \"label\": \"string\",\n          \"score\": 1692.0445812172247,\n          \"important\": false,\n          \"foundationUri\": \"string\",\n          \"propertyValueType\": 3\n        },\n        {\n          \"propertyId\": \"string\",\n          \"label\": \"string\",\n          \"score\": 9165.449746470269,\n          \"important\": true,\n          \"foundationUri\": \"string\",\n          \"propertyValueType\": 3\n        }\n      ],\n      \"propertiesTruncated\": false,\n      \"isResidualOther\": false,\n      \"isResidualUnspecified\": true,\n      \"chapter\": \"string\",\n      \"theCode\": \"string\",\n      \"score\": 8363.035396657804,\n      \"titleIsASearchResult\": true,\n      \"titleIsTopScore\": false,\n      \"entityType\": 0,\n      \"important\": false,\n      \"descendants\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ISimpleEntity detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ISimpleEntity detected>\"\n        }\n      ]\n    }\n  ],\n  \"error\": false,\n  \"errorMessage\": \"string\",\n  \"resultChopped\": false,\n  \"wordSuggestionsChopped\": true,\n  \"guessType\": 0,\n  \"uniqueSearchId\": \"56adbd72-72a9-bf87-3a54-e1631aabb14c\",\n  \"words\": [\n    {\n      \"label\": \"string\",\n      \"dontChangeResult\": true\n    },\n    {\n      \"label\": \"string\",\n      \"dontChangeResult\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34426e31-5996-40db-b1e2-19d2f06c9348",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icd",
+                    "entity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subtreesFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chapterFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "useFlexisearch",
+                      "value": "false"
+                    },
+                    {
+                      "key": "flatResults",
+                      "value": "true"
+                    },
+                    {
+                      "key": "propertiesToBeSearched",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "highlightingEnabled",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API. Values are like v1,v2.\n For example, if you provide value v2, the API will respond in the format of the version 2 of the API",
+                    "key": "API-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ICD-API is multi-lingual. By changing this header, you may make the API respond in different languages\nLanguages will be available as the translations of ICD-11 completes. \nThe values are language codes such as en, es, zh, etc.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "icdapi_access"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://icdaccessmanagement.who.int/connect/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c7705020-a802-41bb-a5a4-a741fd2c37b1",
+    "name": "ICD Foundation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>\nICD-API is a REST API that allows programmatic access to the International Classification of Diseases (ICD).\n</p><p>\nFor most users that require accessing the ICD-11 statistical classification with codes, you need to use the <b>Linearization</b> endpoints with the linearizationId set to <b>mms</b>\n</p><p>\n<b>Foundation</b> endpoints provide information on the Foundation Component of ICD-11. \n</p><p>\n<b>ICD10</b> endpoints serves ICD-10 releases. Please note that functionality on the ICD-10 endpoints are limited. (i.e. the search is not provided)\n</p><p>\nFor more information on the API please see the <a href=\"https://icd.who.int/icdapi\">ICD-API home page </a>\n</p>\n",
+      "type": "text/plain"
+    }
+  }
+}

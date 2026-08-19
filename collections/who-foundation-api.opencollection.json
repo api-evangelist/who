@@ -1,0 +1,288 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ICD Foundation API",
+    "version": "v2.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://icdaccessmanagement.who.int/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Foundation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "This endpoint returns basic information on the latest release of the ICD-11 Foundation together with the top level Foundation entities.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/entity",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "query",
+                "description": "This is an optional parameter and if ignored, the API will return values from the latest released version of the Foundation.\r\n            If provided, the API will respond using that particular release. The values are like 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              }
+            ]
+          },
+          "docs": "This endpoint returns basic information on the latest release of the ICD-11 Foundation together with the top level Foundation entities."
+        },
+        {
+          "info": {
+            "name": "This endpoint provides you information on a specific ICD-11 foundation entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/entity/:id",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric part at the end of the URI for an entity"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "query",
+                "description": "This is an optional parameter and if ignored, the API will return values from the latest released version of the Foundation.\r\n            If provided, the API will respond using that particular release. The values are like 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Some property values such as ancestor and decendant lists are not provided in the response by default. However, it is possible\r\n            to request them. These properties are <i>ancestor, descendant and diagnosticCriteria.</i> For example, if you set include=ancestor the returned response will \r\n            include all ancestor entity URIs for the requested entity.\r\n            A comma separated list could be used to request multiple optional property values. e.g. include=ancestor,descendant"
+              }
+            ]
+          },
+          "docs": "This endpoint provides you information on a specific ICD-11 foundation entity"
+        },
+        {
+          "info": {
+            "name": "Provides the best matching classification entity (its code and URI) for the provided diagnostic text. see AutoCodingSearchResult\r\nschema for information on the response.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/entity/autocode",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "searchText",
+                "value": "",
+                "type": "query",
+                "description": "Input text for which the matching entity to be provided"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "query",
+                "description": "The id for the release. This is generally formatted like this: 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "subtreesFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants"
+              },
+              {
+                "name": "matchThreshold",
+                "value": "",
+                "type": "query",
+                "description": "score is a value between 0 and 1 that indicates the similarity between the input text and the matched term. matchThreshold the minimum score to be included in the output. The API will use default value if not provided"
+              }
+            ]
+          },
+          "docs": "Provides the best matching classification entity (its code and URI) for the provided diagnostic text. see AutoCodingSearchResult\r\nschema for information on the response."
+        },
+        {
+          "info": {
+            "name": "This endpoint is for searching the foundation component of the ICD-11. The search can be customized using the parameters as described. Search endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/icd/entity/search",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Text to be searched. Having the character % at the end will be regarded as a wild card for that word"
+              },
+              {
+                "name": "subtreesFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants"
+              },
+              {
+                "name": "chapterFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional, comma or semicolon separated list of chapter codes eg:01;02;21 When provided, the search will be performed only on these chapters"
+              },
+              {
+                "name": "useFlexisearch",
+                "value": "",
+                "type": "query",
+                "description": "Changes the search mode to flexible search.\r\n            - In the regular search mode, the Coding Tool will only give you results that contain all of the words that you've used in your search. It accepts different variants or \r\n            synonyms of the words but essentially it searches for a result that contains all components of your search. Whereas in flexible search mode, the results do not have to \r\n            contain all of the words that are typed. It would still try to find the best matching phrase but there may be words in your search that are not matched at all\r\n            - It is recommended to use flexible search only when regular search does not provide a result"
+              },
+              {
+                "name": "flatResults",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Default value false. If set to true the search result entities are provided in a nested data structure\r\n            representing the ICD-11 hierarchy. Otherwise they are listed as flat list of matches"
+              },
+              {
+                "name": "propertiesToBeSearched",
+                "value": "",
+                "type": "query",
+                "description": "The properties to be searched. By default the system searches, Title, Synonyms and FullySpecifiedName.\r\n            The valid values that could be used are: \"Title\", \"Synonym\", \"NarrowerTerm\", \"FullySpecifiedName\", \"Definition\" and \"Exclusion\"\r\n            More than one property could be used with \",\" as the separator. In this case the results will include matches from any one of these properties"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "query",
+                "description": "This is an optional parameter and if ignored, the API will return values from the latest released version of the Foundation.\r\n            If provided, the API will respond using that particular release. The values are like 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "highlightingEnabled",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Default is true, if set to false the search result highlighting is turned off\r\n            and the results don't contain special tags for highlighting where the results are found within the text"
+              }
+            ]
+          },
+          "docs": "This endpoint is for searching the foundation component of the ICD-11. The search can be customized using the parameters as described. Search endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K"
+        },
+        {
+          "info": {
+            "name": "This endpoint is for searching the foundation component of the ICD-11. The search can be customized using the parameters as described. Search endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/icd/entity/search",
+            "headers": [
+              {
+                "name": "API-Version",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Text to be searched. Having the character % at the end will be regarded as a wild card for that word"
+              },
+              {
+                "name": "subtreesFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Comma separated list of URIs. If provided, the search will be performed on the entities provided and their descendants"
+              },
+              {
+                "name": "chapterFilter",
+                "value": "",
+                "type": "query",
+                "description": "Optional, comma or semicolon separated list of chapter codes eg:01;02;21 When provided, the search will be performed only on these chapters"
+              },
+              {
+                "name": "useFlexisearch",
+                "value": "",
+                "type": "query",
+                "description": "Changes the search mode to flexible search.\r\n            - In the regular search mode, the Coding Tool will only give you results that contain all of the words that you've used in your search. It accepts different variants or \r\n            synonyms of the words but essentially it searches for a result that contains all components of your search. Whereas in flexible search mode, the results do not have to \r\n            contain all of the words that are typed. It would still try to find the best matching phrase but there may be words in your search that are not matched at all\r\n            - It is recommended to use flexible search only when regular search does not provide a result"
+              },
+              {
+                "name": "flatResults",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. Default value false. If set to true the search result entities are provided in a nested data structure\r\n            representing the ICD-11 hierarchy. Otherwise they are listed as flat list of matches"
+              },
+              {
+                "name": "propertiesToBeSearched",
+                "value": "",
+                "type": "query",
+                "description": "The properties to be searched. By default the system searches, Title, Synonyms and FullySpecifiedName.\r\n            The valid values that could be used are: \"Title\", \"Synonym\", \"NarrowerTerm\", \"FullySpecifiedName\", \"Definition\" and \"Exclusion\"\r\n            More than one property could be used with \",\" as the separator. In this case the results will include matches from any one of these properties"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "query",
+                "description": "This is an optional parameter and if ignored, the API will return values from the latest released version of the Foundation.\r\n            If provided, the API will respond using that particular release. The values are like 2019-04. All releases are listed at https://icd.who.int/docs/icd-api/SupportedClassifications"
+              },
+              {
+                "name": "highlightingEnabled",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Default is true, if set to false the search result highlighting is turned off\r\n            and the results don't contain special tags for highlighting where the results are found within the text"
+              }
+            ]
+          },
+          "docs": "This endpoint is for searching the foundation component of the ICD-11. The search can be customized using the parameters as described. Search endpoint accepts both GET and POST requests. If the size of the request is too large, you may need to use POST\r\nas HTTP GET has a size limit of 2K"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
