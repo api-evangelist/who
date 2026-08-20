@@ -61,6 +61,8 @@ apis:
   humanURL: https://www.who.int/data/gho/info/gho-odata-api
   baseURL: https://ghoapi.azureedge.net/api
   tags:
+  - ICD-10
+  tags_raw:
   - ICD10
   properties:
   - type: OpenAPI
