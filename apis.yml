@@ -10,6 +10,18 @@ description: >
   required, while the ICD API provides structured access to ICD-11 and ICD-10
   clinical classifications via OAuth 2 credentials obtained through free
   registration.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: open
