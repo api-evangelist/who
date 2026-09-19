@@ -57,6 +57,8 @@ apis:
   humanURL: https://www.who.int/data/gho/info/gho-odata-api
   baseURL: https://ghoapi.azureedge.net/api
   tags:
+  - Foundations
+  tags_raw:
   - Foundation
   properties:
   - type: OpenAPI
