@@ -199,6 +199,27 @@ components:
             Browser URL property provides a direct link to the classification in the WHO''s on-line ICD Browser.'
       additionalProperties: false
       description: Shared superclass for Foundation and Linearization top level in API response. Used only for swagger docs.
+    MultiVersion:
+      type: object
+      properties:
+        title:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        latestRelease:
+          type:
+          - string
+          - 'null'
+          description: Latest release available for this linearization
+        release:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: List of available releases for this linearization
+      additionalProperties: false
+      description: 'Class representing available versions of a given classification or classification entity
+
+        This is used when the request is made without a relase id (or minor version)'
     Term:
       type: object
       properties:
@@ -225,6 +246,21 @@ components:
           description: If the term has been deprecated, this flag is set to true
       additionalProperties: false
       description: Class representing a term with language specific label and optional cross references
+    LanguageSpecificText:
+      type: object
+      properties:
+        '@language':
+          type:
+          - string
+          - 'null'
+          description: Language code for the string
+        '@value':
+          type:
+          - string
+          - 'null'
+          description: Label in the given language
+      additionalProperties: false
+      description: Language specific text as used in JSON-LD
     ICD10Entity:
       type: object
       properties:
@@ -303,42 +339,6 @@ components:
             Browser URL property provides a direct link to the classification in the WHO''s on-line ICD Browser.'
       additionalProperties: false
       description: Class representing an ICD-10 Entity
-    LanguageSpecificText:
-      type: object
-      properties:
-        '@language':
-          type:
-          - string
-          - 'null'
-          description: Language code for the string
-        '@value':
-          type:
-          - string
-          - 'null'
-          description: Label in the given language
-      additionalProperties: false
-      description: Language specific text as used in JSON-LD
-    MultiVersion:
-      type: object
-      properties:
-        title:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        latestRelease:
-          type:
-          - string
-          - 'null'
-          description: Latest release available for this linearization
-        release:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: List of available releases for this linearization
-      additionalProperties: false
-      description: 'Class representing available versions of a given classification or classification entity
-
-        This is used when the request is made without a relase id (or minor version)'
   securitySchemes:
     oauth2:
       type: oauth2

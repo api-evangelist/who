@@ -291,108 +291,65 @@ paths:
       x-operation-id-original: SearchFoundation
 components:
   schemas:
-    PostcoordinationAvailabilityEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    GuessWord:
+    ISearchResult:
       type: object
       properties:
-        label:
+        destinationEntities:
           type:
-          - string
+          - array
           - 'null'
-        dontChangeResult:
+          items:
+            $ref: '#/components/schemas/ISimpleEntity'
+          description: List of entities that match the search query
+          readOnly: true
+        error:
           type: boolean
+          description: Returns true if an error is occurred during the search
+          readOnly: true
+        errorMessage:
+          type:
+          - string
+          - 'null'
+          description: Error message if there was an error
+          readOnly: true
+        resultChopped:
+          type: boolean
+          description: If the search matches too many results, then the result is chopped
+          readOnly: true
+        wordSuggestionsChopped:
+          type: boolean
+          description: Shows if the word suggestion list is chopped as a result of too many matching words.
+          readOnly: true
+        guessType:
+          $ref: '#/components/schemas/GuessTypeEnum'
+        uniqueSearchId:
+          type: string
+          format: uuid
+        words:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GuessWord'
+          description: List of word suggestions if the search had includeKeywordResult parameter set to true
+          readOnly: true
       additionalProperties: false
-      description: Represents a keyword returned as a as a word completion suggestion or as a next word suggestion
-    TopLevelFoundation:
-      type: object
-      properties:
-        '@context':
-          type:
-          - string
-          - 'null'
-          description: JSON-LD Context for the endpoint
-        '@id':
-          type:
-          - string
-          - 'null'
-          description: unique id for the classification
-        title:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        definition:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        child:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: List of top level entities
-        releaseDate:
-          type:
-          - string
-          - 'null'
-          description: Release date
-        releaseId:
-          type:
-          - string
-          - 'null'
-          description: Release identifier for this particular release of the classification
-        browserUrl:
-          type:
-          - string
-          - 'null'
-          description: 'ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.
-
-            Browser URL property provides a direct link to the classification in the WHO''s on-line ICD Browser.'
-        availableLanguages:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: All languages provided by the API including the one in pre-release state. All languages available in any of the linearizations are included in the list. For example, a language is listed in here even if it is only availabe in one of the linearizations (e.g. ICF)
-        supportedLinearizations:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: The linearizations from this foundation.
-        allReleases:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: Top level URIs for all releases available for the foundation. http://id.who.int/icd/entity is the current version and the others are earlier versions
-      additionalProperties: false
-      description: Class representing top level for the foundation
-    PropertyValueTypeEnum:
+      description: Represents the search result. The search result is organized by ICD entities and in each entity we provide matching property values
+    MatchLevelEnum:
       enum:
       - 0
       - 1
       - 2
       - 3
+      - 4
       type: integer
-      description: "(0) Real:                                An index info from a linearization entity <br />\n(1) UnderShoreLine:                      An index entity from an entity under the shoreline<br />\n(2) UnderShoreLineLogicallyDefined:      An index entity from an entity under the shoreline \n                                                       and has a logical definition<br />\n(3) PostCoordinationCombination:         Virtual index entity created by following post-coordination\n                                                       combinations"
       format: int32
-    EntityTypeEnum:
+    GuessTypeEnum:
       enum:
       - 0
       - 1
       - 2
       type: integer
-      description: '(0) Real: real entity in the linearization / foundation <br />
-
-        (1) UnderShoreLineLogicallyDefined: Entity in the foundation that can be represented as a post-coordination combination in the linearization <br />
-
-        (2) PostCoordinationCombination: does not exist in the foundation but can be represented as post-coordination combination'
       format: int32
     AutoCodingSearchResult:
       type: object
@@ -434,6 +391,13 @@ components:
           type: boolean
       additionalProperties: false
       description: Response object for autocode endpoint
+    PostcoordinationAvailabilityEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     ISimpleEntity:
       type: object
       properties:
@@ -528,15 +492,105 @@ components:
           readOnly: true
       additionalProperties: false
       description: SimpleEntity class represents a single ICD Entity in a search result
-    MatchLevelEnum:
+    PropertyValueTypeEnum:
       enum:
       - 0
       - 1
       - 2
       - 3
-      - 4
       type: integer
+      description: "(0) Real:                                An index info from a linearization entity <br />\n(1) UnderShoreLine:                      An index entity from an entity under the shoreline<br />\n(2) UnderShoreLineLogicallyDefined:      An index entity from an entity under the shoreline \n                                                       and has a logical definition<br />\n(3) PostCoordinationCombination:         Virtual index entity created by following post-coordination\n                                                       combinations"
       format: int32
+    Term:
+      type: object
+      properties:
+        label:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        foundationReference:
+          type:
+          - string
+          - 'null'
+          description: 'In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification
+
+            In these cases foundationReference holds the foundation URI for that entity
+
+            Index terms generated from foundation entities that are not located in the linearization have this reference'
+        linearizationReference:
+          type:
+          - string
+          - 'null'
+          description: 'In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification
+
+            In these cases linearizationReference holds the linearization (or release) URI for that entity'
+        deprecated:
+          type: boolean
+          description: If the term has been deprecated, this flag is set to true
+      additionalProperties: false
+      description: Class representing a term with language specific label and optional cross references
+    LanguageSpecificText:
+      type: object
+      properties:
+        '@language':
+          type:
+          - string
+          - 'null'
+          description: Language code for the string
+        '@value':
+          type:
+          - string
+          - 'null'
+          description: Label in the given language
+      additionalProperties: false
+      description: Language specific text as used in JSON-LD
+    EntityTypeEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      description: '(0) Real: real entity in the linearization / foundation <br />
+
+        (1) UnderShoreLineLogicallyDefined: Entity in the foundation that can be represented as a post-coordination combination in the linearization <br />
+
+        (2) PostCoordinationCombination: does not exist in the foundation but can be represented as post-coordination combination'
+      format: int32
+    ISimplePropertyValue:
+      type: object
+      properties:
+        propertyId:
+          type:
+          - string
+          - 'null'
+          description: Id of the property
+          readOnly: true
+        label:
+          type:
+          - string
+          - 'null'
+          description: "Label that matches the search query. The matched part of the label has a special markup for highlighting. \nFor example when searched for the cholera the Vibrio cholera will be like Vibrio <em class=\"found\">cholera</em>"
+          readOnly: true
+        score:
+          type: number
+          description: Score of the match for this particular property value
+          format: double
+          readOnly: true
+        important:
+          type: boolean
+          description: Identifies a very good match. The result matches all words from the search query.
+          readOnly: true
+        foundationUri:
+          type:
+          - string
+          - 'null'
+          description: 'Only used when searching a linearization
+
+            The foundation URI in which the property value is located.
+
+            This is filled in only during a linearization search when this property value is coming from an under shoreline entity.'
+        propertyValueType:
+          $ref: '#/components/schemas/PropertyValueTypeEnum'
+      additionalProperties: false
+      description: Represents PropertyValues returned in the search result
     FoundationEntity:
       type: object
       properties:
@@ -615,135 +669,81 @@ components:
             Browser URL property provides a direct link to the classification in the WHO''s on-line ICD Browser.'
       additionalProperties: false
       description: Class representing a foundation entity
-    Term:
+    GuessWord:
       type: object
       properties:
         label:
+          type:
+          - string
+          - 'null'
+        dontChangeResult:
+          type: boolean
+      additionalProperties: false
+      description: Represents a keyword returned as a as a word completion suggestion or as a next word suggestion
+    TopLevelFoundation:
+      type: object
+      properties:
+        '@context':
+          type:
+          - string
+          - 'null'
+          description: JSON-LD Context for the endpoint
+        '@id':
+          type:
+          - string
+          - 'null'
+          description: unique id for the classification
+        title:
           $ref: '#/components/schemas/LanguageSpecificText'
-        foundationReference:
-          type:
-          - string
-          - 'null'
-          description: 'In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification
-
-            In these cases foundationReference holds the foundation URI for that entity
-
-            Index terms generated from foundation entities that are not located in the linearization have this reference'
-        linearizationReference:
-          type:
-          - string
-          - 'null'
-          description: 'In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification
-
-            In these cases linearizationReference holds the linearization (or release) URI for that entity'
-        deprecated:
-          type: boolean
-          description: If the term has been deprecated, this flag is set to true
-      additionalProperties: false
-      description: Class representing a term with language specific label and optional cross references
-    GuessTypeEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    LanguageSpecificText:
-      type: object
-      properties:
-        '@language':
-          type:
-          - string
-          - 'null'
-          description: Language code for the string
-        '@value':
-          type:
-          - string
-          - 'null'
-          description: Label in the given language
-      additionalProperties: false
-      description: Language specific text as used in JSON-LD
-    ISimplePropertyValue:
-      type: object
-      properties:
-        propertyId:
-          type:
-          - string
-          - 'null'
-          description: Id of the property
-          readOnly: true
-        label:
-          type:
-          - string
-          - 'null'
-          description: "Label that matches the search query. The matched part of the label has a special markup for highlighting. \nFor example when searched for the cholera the Vibrio cholera will be like Vibrio <em class=\"found\">cholera</em>"
-          readOnly: true
-        score:
-          type: number
-          description: Score of the match for this particular property value
-          format: double
-          readOnly: true
-        important:
-          type: boolean
-          description: Identifies a very good match. The result matches all words from the search query.
-          readOnly: true
-        foundationUri:
-          type:
-          - string
-          - 'null'
-          description: 'Only used when searching a linearization
-
-            The foundation URI in which the property value is located.
-
-            This is filled in only during a linearization search when this property value is coming from an under shoreline entity.'
-        propertyValueType:
-          $ref: '#/components/schemas/PropertyValueTypeEnum'
-      additionalProperties: false
-      description: Represents PropertyValues returned in the search result
-    ISearchResult:
-      type: object
-      properties:
-        destinationEntities:
+        definition:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        child:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ISimpleEntity'
-          description: List of entities that match the search query
-          readOnly: true
-        error:
-          type: boolean
-          description: Returns true if an error is occurred during the search
-          readOnly: true
-        errorMessage:
+            type: string
+          description: List of top level entities
+        releaseDate:
           type:
           - string
           - 'null'
-          description: Error message if there was an error
-          readOnly: true
-        resultChopped:
-          type: boolean
-          description: If the search matches too many results, then the result is chopped
-          readOnly: true
-        wordSuggestionsChopped:
-          type: boolean
-          description: Shows if the word suggestion list is chopped as a result of too many matching words.
-          readOnly: true
-        guessType:
-          $ref: '#/components/schemas/GuessTypeEnum'
-        uniqueSearchId:
-          type: string
-          format: uuid
-        words:
+          description: Release date
+        releaseId:
+          type:
+          - string
+          - 'null'
+          description: Release identifier for this particular release of the classification
+        browserUrl:
+          type:
+          - string
+          - 'null'
+          description: 'ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.
+
+            Browser URL property provides a direct link to the classification in the WHO''s on-line ICD Browser.'
+        availableLanguages:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/GuessWord'
-          description: List of word suggestions if the search had includeKeywordResult parameter set to true
-          readOnly: true
+            type: string
+          description: All languages provided by the API including the one in pre-release state. All languages available in any of the linearizations are included in the list. For example, a language is listed in here even if it is only availabe in one of the linearizations (e.g. ICF)
+        supportedLinearizations:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The linearizations from this foundation.
+        allReleases:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Top level URIs for all releases available for the foundation. http://id.who.int/icd/entity is the current version and the others are earlier versions
       additionalProperties: false
-      description: Represents the search result. The search result is organized by ICD entities and in each entity we provide matching property values
+      description: Class representing top level for the foundation
   securitySchemes:
     oauth2:
       type: oauth2
