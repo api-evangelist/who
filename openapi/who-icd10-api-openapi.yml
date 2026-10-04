@@ -156,6 +156,84 @@ paths:
           description: Not Found
 components:
   schemas:
+    ICD10Entity:
+      type: object
+      properties:
+        title:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        definition:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        longDefinition:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        fullySpecifiedName:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        source:
+          type:
+          - string
+          - 'null'
+          description: URI of the foundation entity that this entity is derived from
+        code:
+          type:
+          - string
+          - 'null'
+          description: Code for the ICD-11 category
+        note:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        codingHint:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        classKind:
+          type:
+          - string
+          - 'null'
+          description: 'Class kind for the category. It could be one of the following
+
+            - chapter : if the entity is a chapter. (i.e. at the top level of the classification
+
+            - block : huger level entity which don''t have codes
+
+            - category : An ICD entity that bears a code'
+        child:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: List of URIs for the child entities
+        parent:
+          type:
+          - string
+          - 'null'
+          description: List of URIs for the parent entity
+        indexTerm:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Term'
+          description: "ICD-11 Index terms are generated from the terms (titles, inclusions, narrower terms) included in the entity\nas well as from the foundation entities under the linearization shore line. The IndexTerm property includes \nall of the index terms of a linearization entity in one place."
+        inclusion:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Term'
+          description: List of inclusions for this entity
+        exclusion:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Term'
+          description: List of exclusions for this entity
+        browserUrl:
+          type:
+          - string
+          - 'null'
+          description: 'ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.
+
+            Browser URL property provides a direct link to the classification in the WHO''s on-line ICD Browser.'
+      additionalProperties: false
+      description: Class representing an ICD-10 Entity
     TopLevel:
       type: object
       properties:
@@ -261,84 +339,6 @@ components:
           description: Label in the given language
       additionalProperties: false
       description: Language specific text as used in JSON-LD
-    ICD10Entity:
-      type: object
-      properties:
-        title:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        definition:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        longDefinition:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        fullySpecifiedName:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        source:
-          type:
-          - string
-          - 'null'
-          description: URI of the foundation entity that this entity is derived from
-        code:
-          type:
-          - string
-          - 'null'
-          description: Code for the ICD-11 category
-        note:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        codingHint:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        classKind:
-          type:
-          - string
-          - 'null'
-          description: 'Class kind for the category. It could be one of the following
-
-            - chapter : if the entity is a chapter. (i.e. at the top level of the classification
-
-            - block : huger level entity which don''t have codes
-
-            - category : An ICD entity that bears a code'
-        child:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: List of URIs for the child entities
-        parent:
-          type:
-          - string
-          - 'null'
-          description: List of URIs for the parent entity
-        indexTerm:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Term'
-          description: "ICD-11 Index terms are generated from the terms (titles, inclusions, narrower terms) included in the entity\nas well as from the foundation entities under the linearization shore line. The IndexTerm property includes \nall of the index terms of a linearization entity in one place."
-        inclusion:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Term'
-          description: List of inclusions for this entity
-        exclusion:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Term'
-          description: List of exclusions for this entity
-        browserUrl:
-          type:
-          - string
-          - 'null'
-          description: 'ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.
-
-            Browser URL property provides a direct link to the classification in the WHO''s on-line ICD Browser.'
-      additionalProperties: false
-      description: Class representing an ICD-10 Entity
   securitySchemes:
     oauth2:
       type: oauth2

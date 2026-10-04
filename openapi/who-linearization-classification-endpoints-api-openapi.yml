@@ -1364,112 +1364,6 @@ paths:
           description: Server Error
 components:
   schemas:
-    ISimpleEntity:
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-          description: URI of the Entity
-        title:
-          type:
-          - string
-          - 'null'
-          description: "Title of the Entity. The matched part of the title has a special markup for highlighting. \nFor example when searched for the cholera the title Vibrio cholera will be like Vibrio <em class=\"found\">cholera</em>"
-        stemId:
-          type:
-          - string
-          - 'null'
-          description: 'If the search result is composed of multiple URIs (i.e. postcoordinated result), Stem Id contains the URI of the stem code
-
-            This field contains the same information as Id in foundation search results'
-        isLeaf:
-          type: boolean
-          description: Shows whether the entity is a leaf node (i.e. does not have any children)
-        postcoordinationAvailability:
-          $ref: '#/components/schemas/PostcoordinationAvailabilityEnum'
-        hasCodingNote:
-          type: boolean
-          description: Shows whether there is a coding note attached to the item
-        hasMaternalChapterLink:
-          type: boolean
-          description: Shows whether the entity has maternal chapter link
-        hasPerinatalChapterLink:
-          type: boolean
-        matchingPVs:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ISimplePropertyValue'
-          description: List of property values that match the search string
-          readOnly: true
-        propertiesTruncated:
-          type: boolean
-          description: Shows if the list of matching property values is truncated as a result of too many maching property values
-          readOnly: true
-        isResidualOther:
-          type: boolean
-          description: Shows if this entity is an other specified residual category. (Not applicable for foundation search )
-          readOnly: true
-        isResidualUnspecified:
-          type: boolean
-          description: Shows if this entity is an unspecified residual category. (Not applicable for foundation search )
-          readOnly: true
-        chapter:
-          type:
-          - string
-          - 'null'
-          description: The chapter code for the entity
-          readOnly: true
-        theCode:
-          type:
-          - string
-          - 'null'
-          description: The code for the entity (Not applicable for foundation )
-          readOnly: true
-        score:
-          type: number
-          description: Shows how good is the search result. Higher numbers are better matches. There is no other meaning to this value than its relative value
-          format: double
-          readOnly: true
-        titleIsASearchResult:
-          type: boolean
-          description: Shows whether the title of the entity is among the search results
-          readOnly: true
-        titleIsTopScore:
-          type: boolean
-          description: Shows whether the title is the top scored search result
-          readOnly: true
-        entityType:
-          $ref: '#/components/schemas/EntityTypeEnum'
-        important:
-          type: boolean
-          description: Identifies a very good match. The result matches all words from the search query.
-          readOnly: true
-        descendants:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ISimpleEntity'
-          description: Used when the search result is not represented as flat list but rather organized according to ICD hierarchy
-          readOnly: true
-      additionalProperties: false
-      description: SimpleEntity class represents a single ICD Entity in a search result
-    EntityTypeEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      description: '(0) Real: real entity in the linearization / foundation <br />
-
-        (1) UnderShoreLineLogicallyDefined: Entity in the foundation that can be represented as a post-coordination combination in the linearization <br />
-
-        (2) PostCoordinationCombination: does not exist in the foundation but can be represented as post-coordination combination'
-      format: int32
     CodeInfo:
       type: object
       properties:
@@ -1890,211 +1784,111 @@ components:
       description: 'This class is used when an ICD-11 linearization queried with a code or a postcoordination code cluster
 
         It provides information on the entities referred in the code string'
-    DeathCertificateCheckResult:
+    AutoCodingSearchResult:
       type: object
       properties:
-        report:
+        searchText:
           type:
           - string
           - 'null'
-          description: Output report prepared during the computation of the underlying cause of death
-        tabularReport:
+          description: Text that is searched
+        matchingText:
           type:
           - string
           - 'null'
-          description: Detailed tabular output report prepared during the computation of the underlying cause of death
-        issueIds:
+          description: The best matching phrase found in the classification
+        theCode:
           type:
           - string
           - 'null'
+          description: Code of the best matching entity found in the classification
+        foundationURI:
+          type:
+          - string
+          - 'null'
+          description: Foundation URI of the best matching entity found in the classification
+        linearizationURI:
+          type:
+          - string
+          - 'null'
+          description: Linearization URI of the best matching entity found in the classification
+        matchLevel:
+          $ref: '#/components/schemas/MatchLevelEnum'
+        matchScore:
+          type: number
+          description: Shows the score of the match. The score is a value between 0 and 1. The higher the score the better the match.
+          format: double
+        matchType:
+          $ref: '#/components/schemas/PropertyValueTypeEnum'
+        isTitle:
+          type: boolean
       additionalProperties: false
-      description: Underlying cause of death response from DORIS system
-    PostcoordinationScaleInfo:
+      description: Response object for autocode endpoint
+    ISearchResult:
       type: object
       properties:
-        axisName:
-          type:
-          - string
-          - 'null'
-          description: postcoordination axis name (a URI that uniquely identifies the axis)
-        requiredPostcoordination:
-          type:
-          - string
-          - 'null'
-          description: If the post-coordination is required or just allowed. "true" means it is a required postcoordination
-        allowMultipleValues:
-          type:
-          - string
-          - 'null'
-          description: 'Shows the behaviour of the postcoordination
-
-            - ''AllowAlways'' means the user could post-coordinate multiple times using this axis.
-
-            - ''NotAllowed'' means the user only post-coordinate once using this axis
-
-            - ''AllowedExceptFromSameBlock'' means multiple values are allowed only if they are coming from different blocks within the value set'
-        scaleEntity:
+        destinationEntities:
           type:
           - array
           - 'null'
           items:
-            type: string
-          description: "List of allowed values during postcoordination. \nNote that these are hierarchical starting points of the allowed value set. i.e. any descendant of the entities provided under the \n`scaleEntity` property can be used during postcoordination."
+            $ref: '#/components/schemas/ISimpleEntity'
+          description: List of entities that match the search query
+          readOnly: true
+        error:
+          type: boolean
+          description: Returns true if an error is occurred during the search
+          readOnly: true
+        errorMessage:
+          type:
+          - string
+          - 'null'
+          description: Error message if there was an error
+          readOnly: true
+        resultChopped:
+          type: boolean
+          description: If the search matches too many results, then the result is chopped
+          readOnly: true
+        wordSuggestionsChopped:
+          type: boolean
+          description: Shows if the word suggestion list is chopped as a result of too many matching words.
+          readOnly: true
+        guessType:
+          $ref: '#/components/schemas/GuessTypeEnum'
+        uniqueSearchId:
+          type: string
+          format: uuid
+        words:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GuessWord'
+          description: List of word suggestions if the search had includeKeywordResult parameter set to true
+          readOnly: true
       additionalProperties: false
-      description: "This class contains information on which axes allow or require postcoordination for an entity \ntogether with the valueset that could be used for the postcoordination"
-    MatchLevelEnum:
+      description: Represents the search result. The search result is organized by ICD entities and in each entity we provide matching property values
+    EntityTypeEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      description: '(0) Real: real entity in the linearization / foundation <br />
+
+        (1) UnderShoreLineLogicallyDefined: Entity in the foundation that can be represented as a post-coordination combination in the linearization <br />
+
+        (2) PostCoordinationCombination: does not exist in the foundation but can be represented as post-coordination combination'
+      format: int32
+    PropertyValueTypeEnum:
       enum:
       - 0
       - 1
       - 2
       - 3
-      - 4
       type: integer
+      description: "(0) Real:                                An index info from a linearization entity <br />\n(1) UnderShoreLine:                      An index entity from an entity under the shoreline<br />\n(2) UnderShoreLineLogicallyDefined:      An index entity from an entity under the shoreline \n                                                       and has a logical definition<br />\n(3) PostCoordinationCombination:         Virtual index entity created by following post-coordination\n                                                       combinations"
       format: int32
-    PostcoordinationSet:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-          description: Full code string for the postcoordination combination
-        linearizationUri:
-          type:
-          - string
-          - 'null'
-          description: Full linearization URI string for the postcoordination combination
-        foundationUri:
-          type:
-          - string
-          - 'null'
-          description: Full foundation URI string for the postcoordination combination
-        label:
-          type:
-          - string
-          - 'null'
-          description: Label representing the postcoordination combination containing the titles of the stem code all postcoordination values inluding nested values
-        stemCode:
-          type:
-          - string
-          - 'null'
-          description: "Code of the stem for the postcoordination combination\nstemCode is not provided if the postcoordinationset is a plain entity without postcoordination. \nIn that case code can be used instead"
-        stemLinearizationUri:
-          type:
-          - string
-          - 'null'
-          description: "Linearization URI string for the stem of the postcoordination combination. \nStemLinearizationUri is not provided if the postcoordinationset is a plain entity without postcoordination. \nIn that case LinearizationUri can be used instead"
-        stemFoundationUri:
-          type:
-          - string
-          - 'null'
-          description: "Foundation URI string for the stem of the postcoordination combination\nStemFoundationUri is not provided if the postcoordinationset is a plain entity without postcoordination. \nIn that case FoundationUri can be used instead"
-        stemLabel:
-          type:
-          - string
-          - 'null'
-          description: "Label representing the stem of the postcoordination combination\nStemLabel is not provided if the postcoordinationset is a plain entity without postcoordination. \nIn that case Label can be used instead"
-        postcoordinationValues:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PostcoordinationValue'
-          description: List of axes and values added to the stem which builds the postcoordination combination
-      additionalProperties: false
-      description: Represents a postcoordination combination. It could be a nested postcoordination where the axis value can also be a postcoordination combination
-    UnderlyingCauseOfDeath:
-      type: object
-      properties:
-        stemCode:
-          type:
-          - string
-          - 'null'
-          description: Stem code for the computed underlying cause of death
-        stemURI:
-          type:
-          - string
-          - 'null'
-          description: URI for the stem code of the computed underlying cause of death
-        code:
-          type:
-          - string
-          - 'null'
-          description: Code for underlying cause of death. May include postcoordination combinations
-        uri:
-          type:
-          - string
-          - 'null'
-          description: URI for underlying cause of death. May include postcoordination combinations
-        report:
-          type:
-          - string
-          - 'null'
-          description: Output report prepared during the computation of the underlying cause of death
-        tabularReport:
-          type:
-          - string
-          - 'null'
-          description: Detailed tabular output report prepared during the computation of the underlying cause of death
-        reject:
-          type: boolean
-          description: Whether the underlying cause of death was rejected due to an error
-        error:
-          type:
-          - string
-          - 'null'
-          description: Any errors returned by the doris engine
-        warning:
-          type:
-          - string
-          - 'null'
-          description: Any warnings returned by the doris engine
-      additionalProperties: false
-      description: Underlying cause of death response from DORIS system
-    PostcoordinationAvailabilityEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Term:
-      type: object
-      properties:
-        label:
-          $ref: '#/components/schemas/LanguageSpecificText'
-        foundationReference:
-          type:
-          - string
-          - 'null'
-          description: 'In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification
-
-            In these cases foundationReference holds the foundation URI for that entity
-
-            Index terms generated from foundation entities that are not located in the linearization have this reference'
-        linearizationReference:
-          type:
-          - string
-          - 'null'
-          description: 'In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification
-
-            In these cases linearizationReference holds the linearization (or release) URI for that entity'
-        deprecated:
-          type: boolean
-          description: If the term has been deprecated, this flag is set to true
-      additionalProperties: false
-      description: Class representing a term with language specific label and optional cross references
-    GuessWord:
-      type: object
-      properties:
-        label:
-          type:
-          - string
-          - 'null'
-        dontChangeResult:
-          type: boolean
-      additionalProperties: false
-      description: Represents a keyword returned as a as a word completion suggestion or as a next word suggestion
     LinearizationEntity:
       type: object
       properties:
@@ -2239,50 +2033,107 @@ components:
             Browser URL property provides a direct link to the classification in the WHO''s on-line ICD Browser.'
       additionalProperties: false
       description: Class representing a linearization entity such as a category in the MMS.
-    ISearchResult:
+    PostcoordinationSet:
       type: object
       properties:
-        destinationEntities:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ISimpleEntity'
-          description: List of entities that match the search query
-          readOnly: true
-        error:
-          type: boolean
-          description: Returns true if an error is occurred during the search
-          readOnly: true
-        errorMessage:
+        code:
           type:
           - string
           - 'null'
-          description: Error message if there was an error
-          readOnly: true
-        resultChopped:
-          type: boolean
-          description: If the search matches too many results, then the result is chopped
-          readOnly: true
-        wordSuggestionsChopped:
-          type: boolean
-          description: Shows if the word suggestion list is chopped as a result of too many matching words.
-          readOnly: true
-        guessType:
-          $ref: '#/components/schemas/GuessTypeEnum'
-        uniqueSearchId:
-          type: string
-          format: uuid
-        words:
+          description: Full code string for the postcoordination combination
+        linearizationUri:
+          type:
+          - string
+          - 'null'
+          description: Full linearization URI string for the postcoordination combination
+        foundationUri:
+          type:
+          - string
+          - 'null'
+          description: Full foundation URI string for the postcoordination combination
+        label:
+          type:
+          - string
+          - 'null'
+          description: Label representing the postcoordination combination containing the titles of the stem code all postcoordination values inluding nested values
+        stemCode:
+          type:
+          - string
+          - 'null'
+          description: "Code of the stem for the postcoordination combination\nstemCode is not provided if the postcoordinationset is a plain entity without postcoordination. \nIn that case code can be used instead"
+        stemLinearizationUri:
+          type:
+          - string
+          - 'null'
+          description: "Linearization URI string for the stem of the postcoordination combination. \nStemLinearizationUri is not provided if the postcoordinationset is a plain entity without postcoordination. \nIn that case LinearizationUri can be used instead"
+        stemFoundationUri:
+          type:
+          - string
+          - 'null'
+          description: "Foundation URI string for the stem of the postcoordination combination\nStemFoundationUri is not provided if the postcoordinationset is a plain entity without postcoordination. \nIn that case FoundationUri can be used instead"
+        stemLabel:
+          type:
+          - string
+          - 'null'
+          description: "Label representing the stem of the postcoordination combination\nStemLabel is not provided if the postcoordinationset is a plain entity without postcoordination. \nIn that case Label can be used instead"
+        postcoordinationValues:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/GuessWord'
-          description: List of word suggestions if the search had includeKeywordResult parameter set to true
-          readOnly: true
+            $ref: '#/components/schemas/PostcoordinationValue'
+          description: List of axes and values added to the stem which builds the postcoordination combination
       additionalProperties: false
-      description: Represents the search result. The search result is organized by ICD entities and in each entity we provide matching property values
+      description: Represents a postcoordination combination. It could be a nested postcoordination where the axis value can also be a postcoordination combination
+    PostcoordinationAvailabilityEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Term:
+      type: object
+      properties:
+        label:
+          $ref: '#/components/schemas/LanguageSpecificText'
+        foundationReference:
+          type:
+          - string
+          - 'null'
+          description: 'In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification
+
+            In these cases foundationReference holds the foundation URI for that entity
+
+            Index terms generated from foundation entities that are not located in the linearization have this reference'
+        linearizationReference:
+          type:
+          - string
+          - 'null'
+          description: 'In some cases such as in exclusions or index terms, the term itself could be coming from another entity in the classification
+
+            In these cases linearizationReference holds the linearization (or release) URI for that entity'
+        deprecated:
+          type: boolean
+          description: If the term has been deprecated, this flag is set to true
+      additionalProperties: false
+      description: Class representing a term with language specific label and optional cross references
+    MatchLevelEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    GuessTypeEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     PostcoordinationValue:
       type: object
       properties:
@@ -2300,53 +2151,6 @@ components:
           description: List of values which could be postcoordination combinations themselves
       additionalProperties: false
       description: Represnets a set values with a specified axis. It is used to build postcoordination combinations
-    AutoCodingSearchResult:
-      type: object
-      properties:
-        searchText:
-          type:
-          - string
-          - 'null'
-          description: Text that is searched
-        matchingText:
-          type:
-          - string
-          - 'null'
-          description: The best matching phrase found in the classification
-        theCode:
-          type:
-          - string
-          - 'null'
-          description: Code of the best matching entity found in the classification
-        foundationURI:
-          type:
-          - string
-          - 'null'
-          description: Foundation URI of the best matching entity found in the classification
-        linearizationURI:
-          type:
-          - string
-          - 'null'
-          description: Linearization URI of the best matching entity found in the classification
-        matchLevel:
-          $ref: '#/components/schemas/MatchLevelEnum'
-        matchScore:
-          type: number
-          description: Shows the score of the match. The score is a value between 0 and 1. The higher the score the better the match.
-          format: double
-        matchType:
-          $ref: '#/components/schemas/PropertyValueTypeEnum'
-        isTitle:
-          type: boolean
-      additionalProperties: false
-      description: Response object for autocode endpoint
-    GuessTypeEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
     MultiVersion:
       type: object
       properties:
@@ -2368,15 +2172,73 @@ components:
       description: 'Class representing available versions of a given classification or classification entity
 
         This is used when the request is made without a relase id (or minor version)'
-    PropertyValueTypeEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      description: "(0) Real:                                An index info from a linearization entity <br />\n(1) UnderShoreLine:                      An index entity from an entity under the shoreline<br />\n(2) UnderShoreLineLogicallyDefined:      An index entity from an entity under the shoreline \n                                                       and has a logical definition<br />\n(3) PostCoordinationCombination:         Virtual index entity created by following post-coordination\n                                                       combinations"
-      format: int32
+    DeathCertificateCheckResult:
+      type: object
+      properties:
+        report:
+          type:
+          - string
+          - 'null'
+          description: Output report prepared during the computation of the underlying cause of death
+        tabularReport:
+          type:
+          - string
+          - 'null'
+          description: Detailed tabular output report prepared during the computation of the underlying cause of death
+        issueIds:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: Underlying cause of death response from DORIS system
+    UnderlyingCauseOfDeath:
+      type: object
+      properties:
+        stemCode:
+          type:
+          - string
+          - 'null'
+          description: Stem code for the computed underlying cause of death
+        stemURI:
+          type:
+          - string
+          - 'null'
+          description: URI for the stem code of the computed underlying cause of death
+        code:
+          type:
+          - string
+          - 'null'
+          description: Code for underlying cause of death. May include postcoordination combinations
+        uri:
+          type:
+          - string
+          - 'null'
+          description: URI for underlying cause of death. May include postcoordination combinations
+        report:
+          type:
+          - string
+          - 'null'
+          description: Output report prepared during the computation of the underlying cause of death
+        tabularReport:
+          type:
+          - string
+          - 'null'
+          description: Detailed tabular output report prepared during the computation of the underlying cause of death
+        reject:
+          type: boolean
+          description: Whether the underlying cause of death was rejected due to an error
+        error:
+          type:
+          - string
+          - 'null'
+          description: Any errors returned by the doris engine
+        warning:
+          type:
+          - string
+          - 'null'
+          description: Any warnings returned by the doris engine
+      additionalProperties: false
+      description: Underlying cause of death response from DORIS system
     LanguageSpecificText:
       type: object
       properties:
@@ -2392,6 +2254,50 @@ components:
           description: Label in the given language
       additionalProperties: false
       description: Language specific text as used in JSON-LD
+    PostcoordinationScaleInfo:
+      type: object
+      properties:
+        axisName:
+          type:
+          - string
+          - 'null'
+          description: postcoordination axis name (a URI that uniquely identifies the axis)
+        requiredPostcoordination:
+          type:
+          - string
+          - 'null'
+          description: If the post-coordination is required or just allowed. "true" means it is a required postcoordination
+        allowMultipleValues:
+          type:
+          - string
+          - 'null'
+          description: 'Shows the behaviour of the postcoordination
+
+            - ''AllowAlways'' means the user could post-coordinate multiple times using this axis.
+
+            - ''NotAllowed'' means the user only post-coordinate once using this axis
+
+            - ''AllowedExceptFromSameBlock'' means multiple values are allowed only if they are coming from different blocks within the value set'
+        scaleEntity:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: "List of allowed values during postcoordination. \nNote that these are hierarchical starting points of the allowed value set. i.e. any descendant of the entities provided under the \n`scaleEntity` property can be used during postcoordination."
+      additionalProperties: false
+      description: "This class contains information on which axes allow or require postcoordination for an entity \ntogether with the valueset that could be used for the postcoordination"
+    GuessWord:
+      type: object
+      properties:
+        label:
+          type:
+          - string
+          - 'null'
+        dontChangeResult:
+          type: boolean
+      additionalProperties: false
+      description: Represents a keyword returned as a as a word completion suggestion or as a next word suggestion
     ISimplePropertyValue:
       type: object
       properties:
@@ -2486,6 +2392,100 @@ components:
           description: Languages whose translations are in pre-release state for this linearization.
       additionalProperties: false
       description: Class representing top level for the foundation
+    ISimpleEntity:
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+          description: URI of the Entity
+        title:
+          type:
+          - string
+          - 'null'
+          description: "Title of the Entity. The matched part of the title has a special markup for highlighting. \nFor example when searched for the cholera the title Vibrio cholera will be like Vibrio <em class=\"found\">cholera</em>"
+        stemId:
+          type:
+          - string
+          - 'null'
+          description: 'If the search result is composed of multiple URIs (i.e. postcoordinated result), Stem Id contains the URI of the stem code
+
+            This field contains the same information as Id in foundation search results'
+        isLeaf:
+          type: boolean
+          description: Shows whether the entity is a leaf node (i.e. does not have any children)
+        postcoordinationAvailability:
+          $ref: '#/components/schemas/PostcoordinationAvailabilityEnum'
+        hasCodingNote:
+          type: boolean
+          description: Shows whether there is a coding note attached to the item
+        hasMaternalChapterLink:
+          type: boolean
+          description: Shows whether the entity has maternal chapter link
+        hasPerinatalChapterLink:
+          type: boolean
+        matchingPVs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ISimplePropertyValue'
+          description: List of property values that match the search string
+          readOnly: true
+        propertiesTruncated:
+          type: boolean
+          description: Shows if the list of matching property values is truncated as a result of too many maching property values
+          readOnly: true
+        isResidualOther:
+          type: boolean
+          description: Shows if this entity is an other specified residual category. (Not applicable for foundation search )
+          readOnly: true
+        isResidualUnspecified:
+          type: boolean
+          description: Shows if this entity is an unspecified residual category. (Not applicable for foundation search )
+          readOnly: true
+        chapter:
+          type:
+          - string
+          - 'null'
+          description: The chapter code for the entity
+          readOnly: true
+        theCode:
+          type:
+          - string
+          - 'null'
+          description: The code for the entity (Not applicable for foundation )
+          readOnly: true
+        score:
+          type: number
+          description: Shows how good is the search result. Higher numbers are better matches. There is no other meaning to this value than its relative value
+          format: double
+          readOnly: true
+        titleIsASearchResult:
+          type: boolean
+          description: Shows whether the title of the entity is among the search results
+          readOnly: true
+        titleIsTopScore:
+          type: boolean
+          description: Shows whether the title is the top scored search result
+          readOnly: true
+        entityType:
+          $ref: '#/components/schemas/EntityTypeEnum'
+        important:
+          type: boolean
+          description: Identifies a very good match. The result matches all words from the search query.
+          readOnly: true
+        descendants:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ISimpleEntity'
+          description: Used when the search result is not represented as flat list but rather organized according to ICD hierarchy
+          readOnly: true
+      additionalProperties: false
+      description: SimpleEntity class represents a single ICD Entity in a search result
   securitySchemes:
     oauth2:
       type: oauth2
