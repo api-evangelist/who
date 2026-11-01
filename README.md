@@ -1,4 +1,4 @@
-# World Health Organization (WHO) (who)
+# World Health Organization (WHO)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,81 +66,167 @@
 
 The World Health Organization (WHO) is the United Nations specialized agency for international public health. WHO provides free public REST APIs giving programmatic access to global health statistics, disease surveillance data, immunization coverage, health indicators by country, and the International Classification of Diseases (ICD). The GHO OData API exposes hundreds of health indicators across all WHO member states with no authentication required, while the ICD API provides structured access to ICD-11 and ICD-10 clinical classifications via OAuth 2 credentials obtained through free registration.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/who/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/who/refs/heads/main/apis.yml)
+**Areas:** Health · Global Health · Disease Surveillance · Immunization · Health Statistics · ICD · WHO · United Nations · Open Data
 
-## Tags
+## World Health Organization (WHO) on APIs.io
 
-- Health
-- Global Health
-- Disease Surveillance
-- Immunization
-- Health Statistics
-- ICD
-- WHO
-- United Nations
-- Open Data
+Everything profiled for World Health Organization (WHO) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/who/](https://apis.io/providers/who/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+- [World Health Organization (WHO) Foundation API](https://apis.io/apis/who/who-foundation-api/) — The Foundation API from World Health Organization (WHO) — 4 operation(s) for foundation.
+- [World Health Organization (WHO) ICD10 API](https://apis.io/apis/who/who-icd10-api/) — The ICD10 API from World Health Organization (WHO) — 4 operation(s) for icd10.
+- [World Health Organization (WHO) Linearization (classification endpoints) API](https://apis.io/apis/who/who-linearization-classification-endpoints-api/) — The Linearization (classification endpoints) API from World Health Organization (WHO) — 13 operation(s) for linearization (classification endpoints).
 
-## APIs
+### Published properties
 
-### WHO GHO OData API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Global Health Observatory (GHO) OData API provides a query interface to WHO's global health data and statistics, covering hundreds of health indicators across all WHO member states and regions. No authentication is required. Supports OData filtering, field selection, and is compatible with Power BI.
+#### Agentic access (1)
 
-- **Human URL:** [https://www.who.int/data/gho/info/gho-odata-api](https://www.who.int/data/gho/info/gho-odata-api)
-- **Base URL:** `https://ghoapi.azureedge.net/api`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Who Agentic Access](https://apis.io/agentic-access/who/who-agentic-access/)
 
-- Global Health Observatory
-- Health Indicators
-- OData
-- Open Data
+#### JSON Schema (25)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://www.who.int/data/gho/info/gho-odata-api)
-- [OpenAPI](https://ghoapi.azureedge.net/api/$metadata) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [AutoCodingSearchResult](https://apis.io/schemas/who/autocodingsearchresult/)
+- [CodeInfo](https://apis.io/schemas/who/codeinfo/)
+- [DeathCertificateCheckResult](https://apis.io/schemas/who/deathcertificatecheckresult/)
+- [EntityTypeEnum](https://apis.io/schemas/who/entitytypeenum/)
+- [FoundationEntity](https://apis.io/schemas/who/foundationentity/)
+- [GuessTypeEnum](https://apis.io/schemas/who/guesstypeenum/)
+- [GuessWord](https://apis.io/schemas/who/guessword/)
+- [ICD10Entity](https://apis.io/schemas/who/icd10entity/)
+- [ISearchResult](https://apis.io/schemas/who/isearchresult/)
+- [ISimpleEntity](https://apis.io/schemas/who/isimpleentity/)
+- [ISimplePropertyValue](https://apis.io/schemas/who/isimplepropertyvalue/)
+- [LanguageSpecificText](https://apis.io/schemas/who/languagespecifictext/)
+- [LinearizationEntity](https://apis.io/schemas/who/linearizationentity/)
+- [MatchLevelEnum](https://apis.io/schemas/who/matchlevelenum/)
+- [MultiVersion](https://apis.io/schemas/who/multiversion/)
+- [PostcoordinationAvailabilityEnum](https://apis.io/schemas/who/postcoordinationavailabilityenum/)
+- [PostcoordinationScaleInfo](https://apis.io/schemas/who/postcoordinationscaleinfo/)
+- [PostcoordinationSet](https://apis.io/schemas/who/postcoordinationset/)
+- [PostcoordinationValue](https://apis.io/schemas/who/postcoordinationvalue/)
+- [PropertyValueTypeEnum](https://apis.io/schemas/who/propertyvaluetypeenum/)
+- [Term](https://apis.io/schemas/who/term/)
+- [TopLevel](https://apis.io/schemas/who/toplevel/)
+- [TopLevelFoundation](https://apis.io/schemas/who/toplevelfoundation/)
+- [TopLevelLinearization](https://apis.io/schemas/who/toplevellinearization/)
+- [UnderlyingCauseOfDeath](https://apis.io/schemas/who/underlyingcauseofdeath/)
 
-### WHO ICD API
+#### JSON-LD (1)
 
-The ICD API provides HTTP-based REST access to the International Classification of Diseases (ICD-11 and ICD-10), including the ICD-11 Foundation Component and Linearizations. Requires free registration to obtain OAuth 2 client credentials. Supports multilingual responses, JSON-LD, and Swagger/OpenAPI documentation.
+Linked-data contexts for the provider's vocabulary.
 
-- **Human URL:** [https://icd.who.int/docs/icd-api](https://icd.who.int/docs/icd-api)
-- **Base URL:** `https://id.who.int/`
+- [Who Context](https://apis.io/jsonld/who/who-context/)
 
-#### Tags
+#### Collections (3)
 
-- ICD-11
-- ICD-10
-- Disease Classification
-- Clinical
-- OAuth 2
+Postman and Open Collection request collections.
 
-#### Properties
+- [ICD Foundation API](https://apis.io/collections/who/open-who-foundation-api/)
+- [ICD Foundation ICD10 API](https://apis.io/collections/who/open-who-icd10-api/)
+- [ICD Foundation Linearization (classification endpoints) API](https://apis.io/collections/who/open-who-linearization-classification-endpoints-api/)
 
-- [Documentation](https://icd.who.int/docs/icd-api/APIDoc-Version2/)
-- [OpenAPI](https://id.who.int/swagger/index.html) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://icdaccessmanagement.who.int/connect/token)
+#### Governance rules (1)
 
-## Common Properties
+Spectral rulesets for the provider's contracts.
+
+- [World Health Organization (WHO) — jsonschema rules](https://apis.io/rules/who/who-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Who Authentication](https://apis.io/security/who/who-authentication/)
+- [Who Domain Security](https://apis.io/security/who/who-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Who Scopes](https://apis.io/scopes/who/who-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Who Plans Pricing](https://apis.io/plans/who/who-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Who Rate Limits](https://apis.io/rate-limits/who/who-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Who Finops](https://apis.io/finops/who/who-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.who.int)
 - [Documentation](https://www.who.int/data/gho/info/gho-odata-api)
-- [Git Hub Org](https://github.com/WorldHealthOrganization)
-- [LinkedIn](https://www.linkedin.com/company/world-health-organization-who-/)
-- [Blog](https://www.who.int/news-room)
 - [Pricing](https://icd.who.int/docs/icd-api/license/)
-- [X (Twitter)](https://x.com/WHO)
-- [Plans](plans/who-plans-pricing.yml)
-- [Rate Limits](rate-limits/who-rate-limits.yml)
-- [Fin Ops](finops/who-finops.yml)
+- [Blog](https://www.who.int/news-room)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.5 |
+| Contract governance | 9.8 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 17.9 |
+| Access clarity | 15.8 |
+
+**Agent readiness 20.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.6** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/who/](https://apis.io/providers/who/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for World Health Organization (WHO): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/who/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
